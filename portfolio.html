@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casey Kusella-Gussin - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            
+        }
+
+        /* Custom Cursor */
+        body::before {
+            content: '⚔️';
+            position: fixed;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            transition: transform 0.1s ease;
+            display: none;
+        }
+
+        body.custom-cursor::before {
+            display: block;
+            left: var(--cursor-x, 0);
+            top: var(--cursor-y, 0);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 2rem 0.5rem;
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title-section {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .hero .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .container {
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: #555;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .social-links a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* About Me Section */
+        .about-me {
+            background: transparent;
+            padding: 1rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-me-content {
+            max-width: 100%;
+        }
+
+        .about-me p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 2rem 2rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: transparent;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.1s ease-out, box-shadow 0.3s;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            transition: color 0.3s;
+        }
+
+        .project-info:hover h3 {
+            color: #3498db;
+        }
+
+        .project-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Full Page Sections */
+        .page-section {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f8f9fa;
+            z-index: 3000;
+            overflow-y: auto;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .page-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .close-page {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .close-page:hover {
+            background: #3498db;
+        }
+
+        /* About Me Page */
+        .about-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+            color: #2c3e50;
+        }
+
+        .about-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .skill-item h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CV Page */
+        .cv-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .cv-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .cv-item {
+            margin-bottom: 2rem;
+        }
+
+        .cv-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-item .cv-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-item p, .cv-item ul {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .cv-item ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Project Detail Page */
+        .project-detail {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f8f9fa;
+            z-index: 3000;
+            overflow-y: auto;
+        }
+
+        .project-detail.active {
+            display: block;
+        }
+
+        .project-detail-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .project-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-detail-header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .close-detail {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .close-detail:hover {
+            background: #3498db;
+        }
+
+        .project-detail-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .project-detail-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .project-detail-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .project-detail-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .project-detail-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .project-detail-info h3 {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .project-detail-info p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .project-detail-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-detail-info li {
+            padding: 0.5rem 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-detail-info li:last-child {
+            border-bottom: none;
+        }
+
+        /* Blog System */
+        .blog-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f8f9fa;
+            z-index: 3000;
+            overflow-y: auto;
+        }
+
+        .blog-page.active {
+            display: block;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .blog-header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .close-blog {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .close-blog:hover {
+            background: #3498db;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .blog-post-date {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-post-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .blog-tag {
+            padding: 0.25rem 0.75rem;
+            background: #e3f2fd;
+            color: #1976d2;
+            border-radius: 15px;
+            font-size: 0.75rem;
+        }
+
+        /* Blog Post Detail */
+        .blog-post-detail {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f8f9fa;
+            z-index: 3001;
+            overflow-y: auto;
+        }
+
+        .blog-post-detail.active {
+            display: block;
+        }
+
+        .blog-post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .blog-post-header {
+            margin-bottom: 2rem;
+        }
+
+        .blog-post-back {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .blog-post-back:hover {
+            background: #3498db;
+        }
+
+        .blog-post-detail h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-meta {
+            color: #999;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .blog-post-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .blog-post-content h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 2rem 0 1rem;
+            text-align: left;
+        }
+
+        .blog-post-content h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-post-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-post-content ul, .blog-post-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .blog-post-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .project-detail-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1rem;
+            }
+
+            .hero-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .social-links {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-header">
+            <div class="hero-title-section">
+                <h1>Casey Kusella-Gussin</h1>
+                <p class="subtitle">Gameplay Programmer and Systems Design</p>
+            </div>
+            <nav>
+                <div class="container">
+                    <ul>
+                        <li><a href="#" onclick="showHome(); return false;">Home</a></li>
+                        <li><a href="#" onclick="openAboutPage(); return false;">About Me</a></li>
+                        <li><a href="#" onclick="openCVPage(); return false;">CV</a></li>
+                        <li><a href="#" onclick="openBlog(); return false;">Blog</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://github.com/ckusellagussin" target="_blank" title="GitHub">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/casey-kusella-gussin-a911b675/" target="_blank" title="LinkedIn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/CKGussinDev" target="_blank" title="Twitter">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://steamcommunity.com/id/ckgussin/myworkshopfiles/" target="_blank" title="Steam Workshop">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- About Me Section (Home Page) -->
+    <section class="about-me" id="homeContent">
+        <div class="about-me-content">
+            <p>A London born and based systems designer and programmer, I am currently creating projects that will land me a job as a systems/gameplay programmer and for my own passion of creating my dream RPG with one prototype at a time.
+            I graduated from the University of Plymouth in 2021, worked for Sports Interactive as a QA Tester in 2022 and went on to work as a Build and Release Specialist in 2024.</p>
+            <p>Professionally, I have extensive knowledge of the development pipeline within AAA deverlopment companies as well as extensive version control and software troubleshooting knowledge</p>
+            <p>In my own time, I love working towards developing ideas i'm inspired by in my head. I also freelance as a programmer making mods for the popular colony simulator game Rimworld
+               I will be looking towards improving my programming skills to a professional level as well as improve my game engine knowledge whether it's making my own or learning Unreal Engine</p>
+            <p>Currently exploring opportunities!</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="projects-grid">
+            <div class="project-card" data-project="project1">
+                <video class="project-video" autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                </video>
+                <div class="project-info">
+                    <h3>Isometric Bow & Arrow Mechanic</h3>
+                    <p>A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics. Focused on responsive input, camera follow, and player feedback. An experimental gameplay project focused on interaction, movement, and player feedback. Lorem ipsum dolor sit amet, consectetur adipiscing elit. A comprehensive solution for modern problems.</p>
+                    <div class="tech-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="project2">
+                <video class="project-video" autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                </video>
+                <div class="project-info">
+                    <h3>Interactive Portfolio</h3>
+                    <p>A fully playable Unity-based interactive portfolio presented as a museum-style experience. Players explore rooms showcasing my skills, experience, and current projects. A fully playable interactive Unity portfolio presented as a museum‑style experience, allowing players to explore rooms that showcase my skills, experience, and current projects. Interactive playable portfolio showcasing design, programming, and presentation skills.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">WebGL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="project3">
+                <video class="project-video" autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                </video>
+                <div class="project-info">
+                    <h3>God's Oversight (RimWorld Mod)</h3>
+                    <p>A RimWorld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing. A prototype exploring core gameplay mechanics and rapid iteration through focused system design. Beautiful design meets functionality in this innovative project.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="project4">
+                <video class="project-video" autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+                </video>
+                <div class="project-info">
+                    <h3>Project Delta</h3>
+                    <p>Scalable architecture for enterprise solutions.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">Go</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="project5">
+                <video class="project-video" autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+                </video>
+                <div class="project-info">
+                    <h3>Project Epsilon</h3>
+                    <p>Cross-platform mobile experience with seamless performance.</p>
+                    <div class="tech-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Redux</span>
+                        <span class="tag">GraphQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="project6">
+                <video class="project-video" autoplay muted loop playsinline>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
+                </video>
+                <div class="project-info">
+                    <h3>Project Zeta</h3>
+                    <p>Secure and reliable authentication system built for scale.</p>
+                    <div class="tech-tags">
+                        <span class="tag">OAuth</span>
+                        <span class="tag">JWT</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Page -->
+    <div class="page-section" id="aboutPage">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>About Me</h1>
+                <button class="close-page" onclick="closePage('aboutPage')">Back to Portfolio</button>
+            </div>
+            
+            <div class="about-section">
+                <h2>Who I Am</h2>
+                <p>I'm a passionate gameplay programmer with a deep love for creating engaging and immersive gaming experiences. With over 5 years of experience in the industry, I've worked on various projects ranging from indie titles to AAA games.</p>
+                <p>My expertise lies in crafting responsive gameplay mechanics, optimizing performance, and collaborating with multidisciplinary teams to bring creative visions to life. I thrive on solving complex technical challenges and am constantly learning new technologies and techniques.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>C++</h4>
+                        <p>Advanced proficiency in game development</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Unreal Engine</h4>
+                        <p>Blueprint & C++ development</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Unity</h4>
+                        <p>C# scripting & optimization</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Game Design</h4>
+                        <p>Mechanics & system architecture</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Performance Optimization</h4>
+                        <p>Profiling & debugging</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Version Control</h4>
+                        <p>Git, Perforce</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Interests & Hobbies</h2>
+                <p>When I'm not coding, you can find me playing the latest indie games, experimenting with new game engines, or contributing to open-source projects. I'm also an avid reader of game design theory and enjoy attending gaming conferences and meetups.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CV Page -->
+    <div class="page-section" id="cvPage">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Curriculum Vitae</h1>
+                <button class="close-page" onclick="closePage('cvPage')">Back to Portfolio</button>
+            </div>
+
+            <div class="cv-section">
+                <h2>Experience</h2>
+                
+                <div class="cv-item">
+                    <h3>Senior Gameplay Programmer</h3>
+                    <div class="cv-meta">Epic Games Studio • 2022 - Present</div>
+                    <ul>
+                        <li>Led development of core gameplay systems for upcoming AAA title</li>
+                        <li>Optimized game performance, achieving 30% improvement in frame rate</li>
+                        <li>Mentored junior programmers and conducted code reviews</li>
+                        <li>Collaborated with designers to implement and iterate on gameplay mechanics</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h3>Gameplay Programmer</h3>
+                    <div class="cv-meta">Indie Game Studio • 2020 - 2022</div>
+                    <ul>
+                        <li>Developed player movement systems and combat mechanics</li>
+                        <li>Implemented AI behavior using state machines and behavior trees</li>
+                        <li>Created tools and workflows to improve team productivity</li>
+                        <li>Worked directly with game designers to prototype new features</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h3>Junior Programmer</h3>
+                    <div class="cv-meta">Mobile Games Company • 2019 - 2020</div>
+                    <ul>
+                        <li>Assisted in development of mobile puzzle games</li>
+                        <li>Fixed bugs and optimized code for mobile platforms</li>
+                        <li>Implemented UI systems and user interactions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Education</h2>
+                
+                <div class="cv-item">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <div class="cv-meta">University of Technology • 2015 - 2019</div>
+                    <p>Specialized in game development and computer graphics. Graduated with First Class Honours.</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Technical Skills</h2>
+                
+                <div class="cv-item">
+                    <p><strong>Programming Languages:</strong> C++, C#, Python, JavaScript</p>
+                    <p><strong>Game Engines:</strong> Unreal Engine 5, Unity, Custom engines</p>
+                    <p><strong>Tools:</strong> Visual Studio, Git, Perforce, Jira, Confluence</p>
+                    <p><strong>Specializations:</strong> Gameplay mechanics, AI systems, performance optimization, multiplayer networking</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Notable Projects</h2>
+                
+                <div class="cv-item">
+                    <h3>Project Ascension</h3>
+                    <p>Lead programmer on action-adventure game. Implemented combat system, boss AI, and level progression mechanics.</p>
+                </div>
+
+                <div class="cv-item">
+                    <h3>Puzzle Paradise</h3>
+                    <p>Developed core puzzle mechanics and hint system for mobile puzzle game with over 1 million downloads.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Page -->
+    <div class="blog-page" id="blogPage">
+        <div class="blog-container">
+            <div class="blog-header">
+                <h1>Blog</h1>
+                <button class="close-blog" onclick="closeBlog()">Back to Portfolio</button>
+            </div>
+            <div class="blog-posts" id="blogPosts"></div>
+        </div>
+    </div>
+
+    <!-- Blog Post Detail -->
+    <div class="blog-post-detail" id="blogPostDetail">
+        <div class="blog-post-container">
+            <button class="blog-post-back" onclick="closeBlogPost()">← Back to Blog</button>
+            <div class="blog-post-header">
+                <h1 id="blogPostTitle">Blog Post Title</h1>
+                <div class="blog-post-meta">
+                    <span id="blogPostDate">January 1, 2024</span> • 
+                    <span id="blogPostReadTime">5 min read</span>
+                </div>
+            </div>
+            <div class="blog-post-content" id="blogPostContent"></div>
+        </div>
+    </div>
+
+    <!-- Project Detail Page -->
+    <div class="project-detail" id="projectDetail">
+        <div class="project-detail-container">
+            <div class="project-detail-header">
+                <h1 id="detailTitle">Project Title</h1>
+                <button class="close-detail" onclick="closeProjectDetail()">Back to Portfolio</button>
+            </div>
+            <div class="project-detail-content">
+                <div class="project-detail-video" id="detailMedia">
+                    <video id="detailVideo" controls>
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+                <div class="project-detail-info">
+                    <h2>Project Overview</h2>
+                    <p id="detailDescription">Project description goes here.</p>
+                    
+                    <h3>Technologies Used</h3>
+                    <ul id="detailTech"></ul>
+
+                    <h3>Key Features</h3>
+                    <ul id="detailFeatures"></ul>
+
+                    <h3>Project Details</h3>
+                    <p id="detailExtra">Additional information about the project.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Project card tilt effect
+        document.querySelectorAll('.project-card').forEach(card => {
+            let lastX = 0;
+            let lastY = 0;
+
+            card.addEventListener('mouseenter', (e) => {
+                const rect = card.getBoundingClientRect();
+                lastX = rect.left + rect.width / 2;
+                lastY = rect.top + rect.height / 2;
+            });
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const deltaX = (e.clientX - centerX) / (rect.width / 2);
+                const deltaY = (e.clientY - centerY) / (rect.height / 2);
+                
+                const tiltX = deltaY * 10;
+                const tiltY = -deltaX * 10;
+                const scale = 1.05;
+                
+                card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale}) translateY(-10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1) translateY(0)';
+            });
+
+            card.addEventListener('click', () => {
+                const projectId = card.getAttribute('data-project');
+                openProjectDetail(projectId);
+            });
+        });
+
+        // Video autoplay
+        document.addEventListener('DOMContentLoaded', () => {
+            const videos = document.querySelectorAll('.project-video');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        video.muted = true;
+                        video.setAttribute('muted', '');
+                        video.autoplay = true;
+                        video.loop = true;
+                        video.playsInline = true;
+                        video.load();
+                        video.muted = true;
+                        video.loop = true;
+                        video.playsInline = true;
+                        
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(error => {
+                                console.log('Autoplay prevented:', error);
+                            });
+                        }
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            videos.forEach(video => {
+                observer.observe(video);
+                // Also try to play immediately on page load
+                video.muted = true;
+                video.loop = true;
+                video.playsInline = true;
+                video.play().catch(() => {});
+            });
+            
+            loadBlogPosts();
+        });
+
+        // Page navigation
+        function showHome() {
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('projects').style.display = 'block';
+            closePage('aboutPage');
+            closePage('cvPage');
+            closeBlog();
+        }
+
+        function openAboutPage() {
+            document.getElementById('aboutPage').classList.add('active');
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('projects').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openCVPage() {
+            document.getElementById('cvPage').classList.add('active');
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('projects').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePage(pageId) {
+            document.getElementById(pageId).classList.remove('active');
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('projects').style.display = 'block';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Project detail
+        const projectData = {
+            'project1': {
+                title: 'Project Alpha',
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                description: 'A comprehensive solution for modern problems. This project demonstrates advanced techniques and innovative approaches.',
+                tech: ['React', 'Node.js', 'MongoDB'],
+                features: ['Real-time data synchronization', 'Responsive design', 'Advanced authentication'],
+                extra: 'Developed over 6 months with a team of 5 developers.'
+            },
+            'project2': {
+                title: 'Project Beta',
+                embed: true,
+                iframe: 'https://itch.io/embed-upload/12306557?color=333333',
+                description: 'Interactive playable portfolio showcasing design, programming, and presentation skills.',
+                tech: ['Unity', 'C#', 'WebGL'],
+                features: ['Playable interactive experience', 'Embedded HTML5 portfolio', 'Runs in-browser'],
+                extra: 'Fully playable directly within the portfolio.'
+            }
+        };
+
+        function openProjectDetail(projectId) {
+            const detail = document.getElementById('projectDetail');
+            detail.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const data = projectData[projectId] || projectData['project1'];
+            document.getElementById('detailTitle').textContent = data.title;
+
+            const mediaContainer = document.getElementById('detailMedia');
+            if (data.embed) {
+                mediaContainer.innerHTML = `<iframe src="${data.iframe}" frameborder="0" allowfullscreen style="width:100%; aspect-ratio:16/9; border-radius:10px;"></iframe>`;
+            } else {
+                mediaContainer.innerHTML = `<video id="detailVideo" controls><source src="${data.video}" type="video/mp4"></video>`;
+            }
+
+            document.getElementById('detailDescription').textContent = data.description;
+            document.getElementById('detailExtra').textContent = data.extra;
+            document.getElementById('detailTech').innerHTML = data.tech.map(t => `<li>${t}</li>`).join('');
+            document.getElementById('detailFeatures').innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+        }
+
+        function closeProjectDetail() {
+            document.getElementById('projectDetail').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Blog system
+        const blogPostsData = [
+            {
+                id: 1,
+                title: "Getting Started with Gameplay Programming",
+                date: "January 5, 2026",
+                readTime: "8 min read",
+                excerpt: "An introduction to the fundamentals of gameplay programming and building engaging game mechanics.",
+                tags: ["Programming", "Game Design", "Tutorial"],
+                content: `<h2>Introduction</h2><p>Gameplay programming is where mechanics come to life. Understanding player input, state management, and the game loop are essential foundations.</p>`
+            }
+        ];
+
+        function loadBlogPosts() {
+            const container = document.getElementById('blogPosts');
+            container.innerHTML = blogPostsData.map(post => `
+                <div class="blog-post" onclick="openBlogPost(${post.id})">
+                    <div class="blog-post-date">${post.date}</div>
+                    <h3>${post.title}</h3>
+                    <p class="blog-post-excerpt">${post.excerpt}</p>
+                    <div class="blog-post-tags">
+                        ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openBlog() {
+            document.getElementById('blogPage').classList.add('active');
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('projects').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlog() {
+            document.getElementById('blogPage').classList.remove('active');
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('projects').style.display = 'block';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openBlogPost(postId) {
+            const post = blogPostsData.find(p => p.id === postId);
+            if (!post) return;
+
+            document.getElementById('blogPostTitle').textContent = post.title;
+            document.getElementById('blogPostDate').textContent = post.date;
+            document.getElementById('blogPostReadTime').textContent = post.readTime;
+            document.getElementById('blogPostContent').innerHTML = post.content;
+            document.getElementById('blogPostDetail').classList.add('active');
+        }
+
+        function closeBlogPost() {
+            document.getElementById('blogPostDetail').classList.remove('active');
+        }
+
+        // ESC key handler
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProjectDetail();
+                closePage('aboutPage');
+                closePage('cvPage');
+                closeBlog();
+                closeBlogPost();
+            }
+        });
+    </script>
+</body>
+</html>
