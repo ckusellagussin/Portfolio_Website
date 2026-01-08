@@ -16,26 +16,9 @@
             line-height: 1.6;
             color: #333;
             background: #f8f9fa;
-            
         }
 
-        /* Custom Cursor */
-        body::before {
-            content: '⚔️';
-            position: fixed;
-            font-size: 24px;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            transition: transform 0.1s ease;
-            display: none;
-        }
 
-        body.custom-cursor::before {
-            display: block;
-            left: var(--cursor-x, 0);
-            top: var(--cursor-y, 0);
-        }
 
         /* Hero Section */
         .hero {
@@ -191,6 +174,7 @@
             height: 200px;
             object-fit: cover;
             display: block;
+            border: none;
         }
 
         .project-info {
@@ -424,7 +408,7 @@
             overflow: hidden;
         }
 
-        .project-detail-video video {
+        .project-detail-video video, .project-detail-video iframe {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -762,26 +746,24 @@
         <div class="projects-grid">
             <div class="project-card" data-project="project1">
                 <video class="project-video" autoplay muted loop playsinline>
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                    <source src="Videos/BowAndArrowMechanic.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
                     <h3>Isometric Bow & Arrow Mechanic</h3>
-                    <p>A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics. Focused on responsive input, camera follow, and player feedback. An experimental gameplay project focused on interaction, movement, and player feedback. Lorem ipsum dolor sit amet, consectetur adipiscing elit. A comprehensive solution for modern problems.</p>
+                    <p>A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics. Focused on responsive input, camera follow, and player feedback.</p>
                     <div class="tech-tags">
-                        <span class="tag">React</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">MongoDB</span>
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">Physics</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card" data-project="project2">
-                <video class="project-video" autoplay muted loop playsinline>
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-                </video>
+                <img class="project-video" src="Images/interactive_portfolio_thumbnail.jpg" alt="Interactive Portfolio">
                 <div class="project-info">
                     <h3>Interactive Portfolio</h3>
-                    <p>A fully playable Unity-based interactive portfolio presented as a museum-style experience. Players explore rooms showcasing my skills, experience, and current projects. A fully playable interactive Unity portfolio presented as a museum‑style experience, allowing players to explore rooms that showcase my skills, experience, and current projects. Interactive playable portfolio showcasing design, programming, and presentation skills.</p>
+                    <p>A fully playable Unity-based interactive portfolio presented as a museum-style experience. Players explore rooms showcasing my skills, experience, and current projects.</p>
                     <div class="tech-tags">
                         <span class="tag">Unity</span>
                         <span class="tag">C#</span>
@@ -792,22 +774,22 @@
 
             <div class="project-card" data-project="project3">
                 <video class="project-video" autoplay muted loop playsinline>
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                    <source src="Videos/RimworldFinalProject.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
                     <h3>God's Oversight (RimWorld Mod)</h3>
-                    <p>A RimWorld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing. A prototype exploring core gameplay mechanics and rapid iteration through focused system design. Beautiful design meets functionality in this innovative project.</p>
+                    <p>A RimWorld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing.</p>
                     <div class="tech-tags">
-                        <span class="tag">Vue.js</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">Firebase</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">XML</span>
+                        <span class="tag">RimWorld</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card" data-project="project4">
                 <video class="project-video" autoplay muted loop playsinline>
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+                    <source src="Videos/ProjectBloodlines.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
                     <h3>Project Delta</h3>
@@ -822,7 +804,7 @@
 
             <div class="project-card" data-project="project5">
                 <video class="project-video" autoplay muted loop playsinline>
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+                    <source src="Videos/Pathfinder.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
                     <h3>Project Epsilon</h3>
@@ -834,21 +816,8 @@
                     </div>
                 </div>
             </div>
-
-            <div class="project-card" data-project="project6">
-                <video class="project-video" autoplay muted loop playsinline>
-                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
-                </video>
-                <div class="project-info">
-                    <h3>Project Zeta</h3>
-                    <p>Secure and reliable authentication system built for scale.</p>
-                    <div class="tech-tags">
-                        <span class="tag">OAuth</span>
-                        <span class="tag">JWT</span>
-                        <span class="tag">PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
+         </div>
+    </section>
         </div>
     </section>
 
@@ -1018,11 +987,7 @@
                 <button class="close-detail" onclick="closeProjectDetail()">Back to Portfolio</button>
             </div>
             <div class="project-detail-content">
-                <div class="project-detail-video" id="detailMedia">
-                    <video id="detailVideo" controls>
-                        <source src="" type="video/mp4">
-                    </video>
-                </div>
+                <div class="project-detail-video" id="detailMedia"></div>
                 <div class="project-detail-info">
                     <h2>Project Overview</h2>
                     <p id="detailDescription">Project description goes here.</p>
@@ -1043,15 +1008,6 @@
     <script>
         // Project card tilt effect
         document.querySelectorAll('.project-card').forEach(card => {
-            let lastX = 0;
-            let lastY = 0;
-
-            card.addEventListener('mouseenter', (e) => {
-                const rect = card.getBoundingClientRect();
-                lastX = rect.left + rect.width / 2;
-                lastY = rect.top + rect.height / 2;
-            });
-
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
@@ -1084,13 +1040,7 @@
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     const video = entry.target;
-                    if (entry.isIntersecting) {
-                        video.muted = true;
-                        video.setAttribute('muted', '');
-                        video.autoplay = true;
-                        video.loop = true;
-                        video.playsInline = true;
-                        video.load();
+                    if (video.tagName === 'VIDEO' && entry.isIntersecting) {
                         video.muted = true;
                         video.loop = true;
                         video.playsInline = true;
@@ -1101,19 +1051,20 @@
                                 console.log('Autoplay prevented:', error);
                             });
                         }
-                    } else {
+                    } else if (video.tagName === 'VIDEO') {
                         video.pause();
                     }
                 });
             }, { threshold: 0.25 });
 
             videos.forEach(video => {
-                observer.observe(video);
-                // Also try to play immediately on page load
-                video.muted = true;
-                video.loop = true;
-                video.playsInline = true;
-                video.play().catch(() => {});
+                if (video.tagName === 'VIDEO') {
+                    observer.observe(video);
+                    video.muted = true;
+                    video.loop = true;
+                    video.playsInline = true;
+                    video.play().catch(() => {});
+                }
             });
             
             loadBlogPosts();
@@ -1152,21 +1103,45 @@
         // Project detail
         const projectData = {
             'project1': {
-                title: 'Project Alpha',
-                video: 'https://drive.google.com/file/d/1VjrJG3--_qlOAg_s-kyMzPQZl8NjPX7P/view?usp=drive_link',
-                description: 'A comprehensive solution for modern problems. This project demonstrates advanced techniques and innovative approaches.',
-                tech: ['React', 'Node.js', 'MongoDB'],
-                features: ['Real-time data synchronization', 'Responsive design', 'Advanced authentication'],
-                extra: 'Developed over 6 months with a team of 5 developers.'
+                title: 'Isometric Bow & Arrow Mechanic',
+                video: 'Videos/BowAndArrowMechanic.mp4',
+                description: 'A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics. Focused on responsive input, camera follow, and player feedback.',
+                tech: ['Unity', 'C#', 'Physics'],
+                features: ['Isometric camera control', 'Precision aiming system', 'Physics-driven arrow mechanics', 'Responsive player feedback'],
+                extra: 'This prototype focuses on creating a satisfying bow and arrow mechanic in an isometric perspective. Key challenges included calculating aim direction in 3D space while maintaining intuitive 2D controls.'
             },
             'project2': {
-                title: 'Project Beta',
+                title: 'Interactive Portfolio',
                 embed: true,
                 iframe: 'https://itch.io/embed-upload/12306557?color=333333',
-                description: 'Interactive playable portfolio showcasing design, programming, and presentation skills.',
+                description: 'A fully playable Unity-based interactive portfolio presented as a museum-style experience. Players explore rooms showcasing my skills, experience, and current projects.',
                 tech: ['Unity', 'C#', 'WebGL'],
-                features: ['Playable interactive experience', 'Embedded HTML5 portfolio', 'Runs in-browser'],
-                extra: 'Fully playable directly within the portfolio.'
+                features: ['Playable interactive experience', 'Museum-style presentation', 'Embedded HTML5 portfolio', 'Runs directly in-browser'],
+                extra: 'This interactive portfolio transforms a traditional resume into an explorable 3D space. Players walk through different rooms, each dedicated to showcasing different aspects of my work and skills.'
+            },
+            'project3': {
+                title: 'God\'s Oversight (Rimworld Mod)',
+                video: 'Videos/RimworldFinalProject.mp4',
+                description: 'A RimWorld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing.',
+                tech: ['C#', 'XML', 'RimWorld Modding'],
+                features: ['Trait-based ability system', 'Percentage tier progression', 'Balanced gameplay integration', 'XML configuration system'],
+                extra: 'This mod adds a new layer of depth to RimWorld by giving colonists special abilities tied to their personality traits. The system uses percentage-based tiers to ensure balanced progression throughout the game.'
+            },
+            'project4': {
+                title: 'Project Bloodlines',
+                video: 'Videos/ProjectBloodlines.mp4',
+                description: 'An ambitious RPG project exploring character lineage systems and generational gameplay mechanics. Features dynasty management and inherited traits across multiple generations.',
+                tech: ['Unity', 'C#', 'RPG Systems'],
+                features: ['Character lineage system', 'Generational gameplay', 'Dynasty management', 'Trait inheritance mechanics'],
+                extra: 'Project Bloodlines explores how player choices impact future generations. The lineage system allows traits, skills, and relationships to pass down through family trees, creating emergent narratives across multiple playthroughs.'
+            },
+            'project5': {
+                title: 'Pathfinder',
+                video: 'Videos/Pathfinder.mp4',
+                description: 'A pathfinding algorithm implementation with visual debugging and optimization techniques. Demonstrates A* algorithm with various heuristics and grid-based navigation.',
+                tech: ['Unity', 'C#', 'AI'],
+                features: ['A* pathfinding implementation', 'Visual debugging tools', 'Multiple heuristic options', 'Performance optimization'],
+                extra: 'This project implements efficient pathfinding algorithms with real-time visualization. It includes debugging tools to show the algorithm\'s decision-making process and demonstrates various optimization techniques for large-scale navigation.'
             }
         };
 
@@ -1179,10 +1154,12 @@
             document.getElementById('detailTitle').textContent = data.title;
 
             const mediaContainer = document.getElementById('detailMedia');
-            if (data.embed) {
-                mediaContainer.innerHTML = `<iframe src="${data.iframe}" frameborder="0" allowfullscreen style="width:100%; aspect-ratio:16/9; border-radius:10px;"></iframe>`;
-            } else {
-                mediaContainer.innerHTML = `<video id="detailVideo" controls><source src="${data.video}" type="video/mp4"></video>`;
+            if (data.youtube) {
+                mediaContainer.innerHTML = `<iframe src="${data.youtube}" title="YouTube video player" frameborder="0" allowfullscreen style="width:100%; height:100%; border-radius:10px; border:none;"></iframe>`;
+            } else if (data.embed) {
+                mediaContainer.innerHTML = `<iframe src="${data.iframe}" frameborder="0" allowfullscreen style="width:100%; height:100%; border-radius:10px; border:none;"></iframe>`;
+            } else if (data.video) {
+                mediaContainer.innerHTML = `<video controls style="width:100%; height:100%; object-fit:contain;"><source src="${data.video}" type="video/mp4"></video>`;
             }
 
             document.getElementById('detailDescription').textContent = data.description;
@@ -1192,6 +1169,11 @@
         }
 
         function closeProjectDetail() {
+            const video = document.getElementById('detailVideo');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
             document.getElementById('projectDetail').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
