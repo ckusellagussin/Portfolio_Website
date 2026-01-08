@@ -128,6 +128,63 @@
             margin-bottom: 1rem;
             text-align: left;
         }
+        .about-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.about-photo {
+    position: relative;
+    width: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-photo img {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+}
+
+.about-photo:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-photo:hover .photo-caption {
+    opacity: 1;
+}
+
+.about-content {
+    flex: 1;
+}
+
+@media (max-width: 900px) {
+    .about-layout {
+        flex-direction: column;
+    }
+
+    .about-photo {
+        margin: 0 auto;
+    }
+}
+
 
         /* Section Styles */
         section {
@@ -408,7 +465,14 @@
             overflow: hidden;
         }
 
-        .project-detail-video video, .project-detail-video iframe {
+        
+.project-detail-video {
+    position: sticky;
+    top: 24px;
+    will-change: transform;
+}
+
+.project-detail-video video, .project-detail-video iframe {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -684,7 +748,35 @@
                 order: -1;
             }
         }
-    </style>
+    
+.project-repo-link {
+    margin-top: 14px;
+    text-align: center;
+}
+
+.project-repo-link a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.project-repo-link a:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.repo-title {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
+}
+
+</style>
 </head>
 <body>
     <!-- Hero Section -->
@@ -777,12 +869,13 @@
                     <source src="Videos/ProjectBloodlines.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
-                    <h3>Project Delta</h3>
-                    <p>Scalable architecture for enterprise solutions.</p>
+                    <h3>Project Bloodlines - Camera, Control, Character</h3>
+                    <p>The first milestone in a passion project that uses a CRPG control scheme. Inspired by games like Kenshi and Baldur's Gate 3. Focused on learning blueprints and smooth gameplay.</p>
                     <div class="tech-tags">
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">Go</span>
+                        <span class="tag">Unreal Engine 5</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Blueprints</span>
+                        <span class="tag">UI</span>
                     </div>
                 </div>
             </div>
@@ -795,6 +888,7 @@
                     <h3>God's Oversight (Rimworld Mod)</h3>
                     <p>A Rimworld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing.</p>
                     <div class="tech-tags">
+                        <span class="tag">Unity</span>
                         <span class="tag">C#</span>
                         <span class="tag">XML</span>
                         <span class="tag">RimWorld</span>
@@ -808,12 +902,12 @@
                     <source src="Videos/Pathfinder.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
-                    <h3>Project Epsilon</h3>
-                    <p>Cross-platform mobile experience with seamless performance.</p>
+                    <h3>Pathfinder</h3>
+                    <p>A minigame created in the Sports Interactive Gamejam 2024, Focus was on learning Ai pathfinding in a short amount of time</p>
                     <div class="tech-tags">
-                        <span class="tag">React Native</span>
-                        <span class="tag">Redux</span>
-                        <span class="tag">GraphQL</span>
+                        <span class="tag">Unity</span>
+                        <span class="tag">A*</span>
+                        <span class="tag">Gamejam</span>
                     </div>
                 </div>
             </div>
@@ -822,56 +916,105 @@
         </div>
     </section>
 
-    <!-- About Me Page -->
     <div class="page-section" id="aboutPage">
-        <div class="page-container">
-            <div class="page-header">
-                <h1>About Me</h1>
-                <button class="close-page" onclick="closePage('aboutPage')">Back to Portfolio</button>
-            </div>
-            
-            <div class="about-section">
-                <h2>Who I Am</h2>
-                <p>I'm a passionate gameplay programmer with a deep love for creating engaging and immersive gaming experiences. With over 5 years of experience in the industry, I've worked on various projects ranging from indie titles to AAA games.</p>
-                <p>My expertise lies in crafting responsive gameplay mechanics, optimizing performance, and collaborating with multidisciplinary teams to bring creative visions to life. I thrive on solving complex technical challenges and am constantly learning new technologies and techniques.</p>
-            </div>
+    <div class="page-container">
 
-            <div class="about-section">
-                <h2>My Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h4>C++</h4>
-                        <p>Advanced proficiency in game development</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Unreal Engine</h4>
-                        <p>Blueprint & C++ development</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Unity</h4>
-                        <p>C# scripting & optimization</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Game Design</h4>
-                        <p>Mechanics & system architecture</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Performance Optimization</h4>
-                        <p>Profiling & debugging</p>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Version Control</h4>
-                        <p>Git, Perforce</p>
-                    </div>
+        <div class="page-header">
+            <h1>About Me</h1>
+            <button class="close-page" onclick="closePage('aboutPage')">
+                Back to Portfolio
+            </button>
+        </div>
+
+        <!-- WHO I AM -->
+        <div class="about-section">
+            <h2>Who I Am</h2>
+
+            <div class="about-layout">
+                <!-- Text -->
+                <div class="about-content">
+                    <p>
+                        Hello, My name is Casey Kusella-Gussin. As I am writing this, I am 29 years old and currently
+                        residing in London, United Kingdom. I have been in love with video games my whole life and I
+                        have been blessed to work in the video game industry for two and a half years with the hunger
+                        still there.
+                    </p>
+
+                    <p>
+                        I went to the University of Plymouth and graduated with a BSc with Honours in Computing and
+                        Video Games.
+                    </p>
+
+                    <p>
+                        My favourite video games either involve an intensive and urgent story like Mass Effect 2 and
+                        Knights of the Old Republic or a mind boggling set of game mechanics and systems such as
+                        RimWorld, Path of Exile and Crusader Kings.
+                    </p>
+
+                    <p>
+                        My expertise lies in crafting responsive gameplay mechanics, optimizing performance, and
+                        collaborating with multidisciplinary teams to bring creative visions to life.
+                    </p>
+                </div>
+
+                <!-- Photo -->
+                <div class="about-photo">
+                    <img src="Images/CKG.jpg" alt="Photo of Casey">
+                    <span class="photo-caption">Hello 👋</span>
                 </div>
             </div>
+        </div>
 
-            <div class="about-section">
-                <h2>Interests & Hobbies</h2>
-                <p>When I'm not coding, you can find me playing the latest indie games, experimenting with new game engines, or contributing to open-source projects. I'm also an avid reader of game design theory and enjoy attending gaming conferences and meetups.</p>
+        <!-- FUN FACTS -->
+        <div class="about-section">
+            <h2>Fun Facts</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>I have had work experience at Lionhead Studios and Sony Entertainment London which have both closed down</h4>
+                    <p>Was it my fault?</p>
+                </div>
+                <div class="skill-item">
+                    <h4>My favourite movie trilogy is Lord of the Rings</h4>
+                    <p>Obviously</p>
+                </div>
+                <div class="skill-item">
+                    <h4>My ultimate favourite video game of all time is Star Wars: Knights of the Old Republic</h4>
+                    <p>The beginning of my love for RPGs</p>
+                </div>
+                <div class="skill-item">
+                    <h4>I am double jointed and can bend my finger back and touch the back of my hand</h4>
+                    <p>Eww</p>
+                </div>
+                <div class="skill-item">
+                    <h4>I still get excited for video game reveals even though attending E3 was a dream of mine</h4>
+                    <p>Come back E3</p>
+                </div>
+                <div class="skill-item">
+                    <h4>I used to be a model when I was a baby</h4>
+                    <p>Still have the magazine I was featured in</p>
+                </div>
             </div>
         </div>
+
+        <!-- INTERESTS -->
+        <div class="about-section">
+            <h2>Interests & Hobbies</h2>
+            <p>
+                I try to create a balanced lifestyle that doesn't involve me locked in my room all day programming,
+                playing games or watching TV.
+            </p>
+            <p>
+                I love football — I’ve been an Arsenal fan since I was around 5 years old and have never regretted
+                supporting them despite a lack of glory for 20 years.
+            </p>
+            <p>
+                I also maintain an active lifestyle and regularly train at the gym, reaching a peak bench of 150kg.
+            </p>
+        </div>
+
     </div>
+</div>
+
 
     <!-- CV Page -->
     <div class="page-section" id="cvPage">
@@ -881,78 +1024,71 @@
                 <button class="close-page" onclick="closePage('cvPage')">Back to Portfolio</button>
             </div>
 
-            <div class="cv-section">
-                <h2>Experience</h2>
-                
-                <div class="cv-item">
-                    <h3>Senior Gameplay Programmer</h3>
-                    <div class="cv-meta">Epic Games Studio • 2022 - Present</div>
-                    <ul>
-                        <li>Led development of core gameplay systems for upcoming AAA title</li>
-                        <li>Optimized game performance, achieving 30% improvement in frame rate</li>
-                        <li>Mentored junior programmers and conducted code reviews</li>
-                        <li>Collaborated with designers to implement and iterate on gameplay mechanics</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item">
-                    <h3>Gameplay Programmer</h3>
-                    <div class="cv-meta">Indie Game Studio • 2020 - 2022</div>
-                    <ul>
-                        <li>Developed player movement systems and combat mechanics</li>
-                        <li>Implemented AI behavior using state machines and behavior trees</li>
-                        <li>Created tools and workflows to improve team productivity</li>
-                        <li>Worked directly with game designers to prototype new features</li>
-                    </ul>
-                </div>
-
-                <div class="cv-item">
-                    <h3>Junior Programmer</h3>
-                    <div class="cv-meta">Mobile Games Company • 2019 - 2020</div>
-                    <ul>
-                        <li>Assisted in development of mobile puzzle games</li>
-                        <li>Fixed bugs and optimized code for mobile platforms</li>
-                        <li>Implemented UI systems and user interactions</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cv-section">
-                <h2>Education</h2>
-                
-                <div class="cv-item">
-                    <h3>Bachelor of Science in Computer Science</h3>
-                    <div class="cv-meta">University of Technology • 2015 - 2019</div>
-                    <p>Specialized in game development and computer graphics. Graduated with First Class Honours.</p>
-                </div>
-            </div>
-
-            <div class="cv-section">
-                <h2>Technical Skills</h2>
-                
-                <div class="cv-item">
-                    <p><strong>Programming Languages:</strong> C++, C#, Python, JavaScript</p>
-                    <p><strong>Game Engines:</strong> Unreal Engine 5, Unity, Custom engines</p>
-                    <p><strong>Tools:</strong> Visual Studio, Git, Perforce, Jira, Confluence</p>
-                    <p><strong>Specializations:</strong> Gameplay mechanics, AI systems, performance optimization, multiplayer networking</p>
-                </div>
-            </div>
-
-            <div class="cv-section">
-                <h2>Notable Projects</h2>
-                
-                <div class="cv-item">
-                    <h3>Project Ascension</h3>
-                    <p>Lead programmer on action-adventure game. Implemented combat system, boss AI, and level progression mechanics.</p>
-                </div>
-
-                <div class="cv-item">
-                    <h3>Puzzle Paradise</h3>
-                    <p>Developed core puzzle mechanics and hint system for mobile puzzle game with over 1 million downloads.</p>
-                </div>
-            </div>
-        </div>
+       <div class="cv-section">
+    <h2>Experience</h2>
+    <div class="cv-item">
+        <h3>Data Manager (Build and Release Specialist)</h3>
+        <div class="cv-meta">Ubisoft Reflections • January 2024 – April 2025</div>
+        <ul>
+            <li>Worked across three unannounced projects, including <i>Avatar: Frontiers of Pandora</i></li>
+            <li>Managed Perforce servers including depot setup, branch merging, and permissions</li>
+            <li>Provided troubleshooting support for in-house engines and backend tools</li>
+            <li>Developed internal documentation and onboarding tutorials for Perforce Helix Core</li>
+            <li>Supported low-level build engineering and Kanban-based development workflows</li>
+        </ul>
     </div>
+
+    <div class="cv-item">
+        <h3>QA Tester</h3>
+        <div class="cv-meta">Sports Interactive • August 2022 – March 2023</div>
+        <ul>
+            <li>QA testing for <i>Football Manager 2023</i> and <i>Football Manager 2023 Console</i></li>
+            <li>Bug tracking and reporting using Jira and TestRail</li>
+            <li>Community support and live issue tracking</li>
+            <li>Automation soak testing and console testing workflows</li>
+        </ul>
+    </div>
+
+    <div class="cv-item">
+        <h3>QA Work Experience</h3>
+        <div class="cv-meta">Sony Entertainment Europe • July 2013</div>
+        <ul>
+            <li>QA testing on <i>Book of Spells</i> and <i>SingStar</i></li>
+            <li>Assisted with social media and staff interviews</li>
+        </ul>
+    </div>
+
+    <div class="cv-item">
+        <h3>QA Work Experience</h3>
+        <div class="cv-meta">Lionhead Studios • March 2011 – May 2011</div>
+        <ul>
+            <li>QA testing on <i>Fable 3 (PC)</i>, <i>Fable: The Journey</i>, and <i>Fable Legends</i></li>
+            <li>Exposure to professional studio pipelines and development culture</li>
+        </ul>
+    </div>
+</div>
+
+<div class="cv-section">
+    <h2>Education</h2>
+
+    <div class="cv-item">
+        <h3>BSc Computing and Video Game Development</h3>
+        <div class="cv-meta">University of Plymouth • 2016 – 2021</div>
+        <p>Second-Class Honours</p>
+    </div>
+</div>
+
+<div class="cv-section">
+    <h2>Technical Skills</h2>
+
+    <div class="cv-item">
+        <p><strong>Programming:</strong> C#, C++, Blueprints</p>
+        <p><strong>Game Engines:</strong> Unity, Unreal Engine 5</p>
+        <p><strong>Tools:</strong> Git (Administration), Perforce (Administration), Jira, Confluence</p>
+        <p><strong>Specializations:</strong> Gameplay systems, UI systems, Game Modding, Engine workflows</p>
+    </div>
+</div>
+</div>
 
     <!-- Blog Page -->
     <div class="blog-page" id="blogPage">
@@ -1109,32 +1245,160 @@
                 description: 'A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics. Focused on responsive input, camera follow, and player feedback.',
                 tech: ['Unity', 'C#', 'Physics'],
                 features: ['Isometric camera control', 'Precision aiming system', 'Physics-driven arrow mechanics', 'Responsive player feedback'],
-                extra: 'This prototype focuses on creating a satisfying bow and arrow mechanic in an isometric perspective. Key challenges included calculating aim direction in 3D space while maintaining intuitive 2D controls.'
+                extra: `
+<h3>What is it?</h3>
+<p>
+This was an idea that came to me one day after thinking about game mechanics that could be useful to see in a game.
+The isometric bow and arrow mechanic was something I explored as part of a potential passion project using an MMORPG-style
+camera, aiming to support bow gameplay outside of first- or third-person perspectives.
+</p>
+
+<p>
+The mechanic uses a fixed isometric camera where the player aims with the mouse to rotate the character toward the cursor
+and fires an arrow with adjustable trajectory and power. There is intentionally no UI — the goal was to see whether the
+mechanic could be legitimately played at its core. The result is an arcade-style experience that is easy to play, hard to master.
+</p>
+
+<p>
+If the mechanic were to become more realistic, UI elements such as trajectory indicators, power feedback, air resistance,
+and draw speed would likely be required.
+</p>
+
+<h3>What is Done?</h3>
+<ul>
+  <li>Smooth following camera keeping the character centered</li>
+  <li>Instant, adjustable rotation toward the cursor</li>
+  <li>Highly precise aiming through incremental angle and power control</li>
+  <li>Arrows can embed into objects with precision</li>
+  <li>Physically arcing arrow trajectories</li>
+</ul>
+
+<h3>What did I learn?</h3>
+<p>
+Even a seemingly simple mechanic required several supporting systems to feel smooth and responsive.
+Keeping the scope focused helped avoid feature creep and allowed the mechanic to be completed efficiently
+while still delivering meaningful results.
+</p>
+`
+                        
             },
             'project2': {
                 title: 'Interactive Portfolio',
                 embed: true,
                 iframe: 'https://itch.io/embed-upload/12306557?color=333333',
                 description: 'A fully playable Unity-based interactive portfolio presented as a museum-style experience. Players explore rooms showcasing my skills, experience, and current projects.',
-                tech: ['Unity', 'C#', 'WebGL'],
+                tech: ['Unity', 'C#', 'WebGL', 'Blender'],
                 features: ['Playable interactive experience', 'Museum-style presentation', 'Embedded HTML5 portfolio', 'Runs directly in-browser'],
-                extra: 'This interactive portfolio transforms a traditional resume into an explorable 3D space. Players walk through different rooms, each dedicated to showcasing different aspects of my work and skills.'
+                extra: 
+`
+<h3>What is it?</h3>
+<p>
+The interactive portfolio was designed to be placed on the front page of the website to demonstrate my Unity skills
+and provide a more engaging experience for users viewing my portfolio. The level presents information about myself
+while showcasing my ability to create a lightweight application that can be played directly in the browser.
+</p>
+
+<h3>What is done?</h3>
+<p>
+The level currently consists of five rooms, separated into an introduction, about me, employment, portfolio,
+and current projects. Interactivity is included in the form of free movement through the level, similar to a
+museum experience, as well as interactive buttons that open external links and reveal additional information.
+</p>
+
+<h3>What did I learn?</h3>
+<p>
+This project involved significant learning in level design, 3D modelling, and lighting design. The environment
+and several 3D models were created in Blender, while lighting was authored and baked within the Unity Editor.
+Lighting required the most iteration and experimentation to achieve the desired result. Programming was used
+to implement player movement and button-based interactivity. Overall, 3D modelling was the skill that improved
+the most throughout this project.
+</p>
+`
             },
              'project3': {
                 title: 'Project Bloodlines',
                 video: 'Videos/ProjectBloodlines.mp4',
                 description: 'An ambitious RPG project exploring character lineage systems and generational gameplay mechanics. Features dynasty management and inherited traits across multiple generations.',
                 tech: ['Unity', 'C#', 'RPG Systems'],
-                features: ['Character lineage system', 'Generational gameplay', 'Dynasty management', 'Trait inheritance mechanics'],
-                extra: 'Project Bloodlines explores how player choices impact future generations. The lineage system allows traits, skills, and relationships to pass down through family trees, creating emergent narratives across multiple playthroughs.'
+                features: ['Smooth RPG interaction', ''],
+                extra: `<h3>What is it?</h3>
+<p>
+The plan is to create an Action CRPG hybrid that combines the RPG elements of
+<i>Baldur's Gate</i>, <i>Tyranny</i>, and <i>Knights of the Old Republic</i> with the
+combat systems found in <i>Mount &amp; Blade</i>, <i>Exanima</i>, and <i>Mordhau</i>.
+</p>
+
+<h3>What has been done so far?</h3>
+<p>
+To avoid feature creep, I defined a clear set of systems and mechanics that needed
+to be completed before moving on to core gameplay. Milestone 1 has now been reached,
+which includes the following:
+</p>
+
+<ul>
+  <li>Camera system</li>
+  <li>Context menu for interactions and information</li>
+  <li>Dynamic movement state system</li>
+  <li>Stamina and fatigue system</li>
+  <li>RPG menu windows for structured information display</li>
+</ul>
+
+<h3>What have I learned so far and what will I learn?</h3>
+<p>
+Project Bloodlines marks my first significant project developed in Unreal Engine,
+excluding smaller tutorial-based learning projects.
+</p>
+
+<ul>
+  <li>Developed strong familiarity with Blueprints, which have been the primary focus so far</li>
+  <li>Planning to integrate C++ alongside Blueprints for improved performance and scalability</li>
+  <li>Gained substantial experience in UI design, an area not previously explored in other engines</li>
+  <li>Currently learning Unreal Engine’s physics system in preparation for combat implementation</li>
+</ul>
+`
+                
             },
             'project4': {
                 title: 'God\'s Oversight',
                 video: 'Videos/RimworldFinalProject.mp4',
                 description: 'A Rimworld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing.',
-                tech: ['C#', 'XML', 'RimWorld Modding'],
+                tech: ['C#', 'XML Editor', 'dnSpy'],
                 features: ['Trait-based ability system', 'Percentage tier progression', 'Balanced gameplay integration', 'XML configuration system'],
-                extra: 'This mod adds a new layer of depth to RimWorld by giving colonists special abilities tied to their personality traits. The system uses percentage-based tiers to ensure balanced progression throughout the game.'
+                extra: `<h3>God's Oversight</h3>
+<p><strong>A RimWorld Mod</strong></p>
+
+<h3>What is it?</h3>
+<p>
+God's Oversight is my final project for the BSc Computing and Video Game Development course.
+The aim of the COMP 3000 module was to demonstrate the ability to build upon knowledge acquired
+throughout previous years of study.
+</p>
+
+<p>
+The goal of this project was to prove I could design and implement a system within a foreign
+codebase. The resulting mod introduces a trait-based power system where colonists gain abilities
+based on their personal traits, using a percentage-based tier system to determine outcomes.
+</p>
+
+<h3>What did I learn?</h3>
+<ul>
+  <li>RimWorld modding does not involve using the Unity editor</li>
+  <li>Mods must be tested by saving source files and reloading the game for each iteration</li>
+  <li>Source files are accessed by decompiling the game into separate XML files</li>
+  <li>Locating specific functionality requires searching through individual source elements</li>
+  <li>Limited official documentation necessitated extensive exploration of the game’s codebase</li>
+  <li>The project was initially planned to continue beyond university</li>
+  <li>A later expansion pack significantly expanded upon the concepts explored in the mod
+      .It remains unclear whether the mod influenced the expansion’s design</li>
+</ul>
+
+<h3>Downloads and Awards</h3>
+<p>
+The mod reached the Steam Workshop front page for top subscribers of the week, achieving a peak
+subscriber count of <strong>505 users</strong>. It currently holds a <strong>3/5 star rating</strong>
+based on <strong>26 ratings</strong>, with strong positive engagement within the comments section.
+</p>
+`
             },
             'project5': {
                 title: 'Pathfinder',
@@ -1142,7 +1406,43 @@
                 description: 'A pathfinding algorithm implementation with visual debugging and optimization techniques. Demonstrates A* algorithm with various heuristics and grid-based navigation.',
                 tech: ['Unity', 'C#', 'AI'],
                 features: ['A* pathfinding implementation', 'Visual debugging tools', 'Multiple heuristic options', 'Performance optimization'],
-                extra: 'This project implements efficient pathfinding algorithms with real-time visualization. It includes debugging tools to show the algorithm\'s decision-making process and demonstrates various optimization techniques for large-scale navigation.'
+                extra: `<h3>What is it?</h3>
+<p>
+Pathfinder is a mini-game created during an in-house game jam at Sports Interactive.
+The game jam was designed to encourage colleagues from all disciplines to get involved
+and become familiar with the Unity game engine, which <i>Football Manager 2025</i> is being
+developed in.
+</p>
+
+<p>
+Pathfinder was designed as one of several mini-games in a WarioWare-style experience.
+The game focuses on controlling a ball and navigating past moving obstacles that attempt
+to touch the player, which results in a game over. The objective is to successfully guide
+the ball into the goal to complete the mini-game.
+</p>
+
+<h3>What was done?</h3>
+<ul>
+  <li>Implemented basic movement using physics forces rather than direct translation</li>
+  <li>Created obstacle AI with randomized patrol behavior constrained by level boundaries</li>
+  <li>Implemented a detection system using cone-shaped raycasts to trigger chase behavior</li>
+  <li>Designed obstacle interactions that temporarily disable the player for 5 seconds to prevent clumping</li>
+</ul>
+
+<h3>What did I learn?</h3>
+<p>
+The game jam was a valuable team-based development experience. It provided insight into
+collaborative game design and rapid prototyping within a professional environment.
+</p>
+
+<ul>
+  <li>First hands-on experience using Perforce for version control and live asset check-in/out</li>
+  <li>Improved understanding of teamwork and coordination during short development cycles</li>
+  <li>Learned about AI navigation using NavMesh systems</li>
+  <li>Gained experience with layer masking to differentiate between environment, allies, and enemies</li>
+  <li>Developed deeper knowledge of raycasting as a core but performance-sensitive gameplay tool</li>
+</ul>`
+
             }
         };
 
@@ -1164,9 +1464,10 @@
             }
 
             document.getElementById('detailDescription').textContent = data.description;
-            document.getElementById('detailExtra').textContent = data.extra;
+            document.getElementById('detailExtra').innerHTML = data.extra;
             document.getElementById('detailTech').innerHTML = data.tech.map(t => `<li>${t}</li>`).join('');
             document.getElementById('detailFeatures').innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+            enableProjectMediaScroll();
         }
 
         function closeProjectDetail() {
@@ -1175,6 +1476,7 @@
                 video.pause();
                 video.currentTime = 0;
             }
+            resetProjectMediaScroll();
             document.getElementById('projectDetail').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
@@ -1245,6 +1547,36 @@
                 closeBlogPost();
             }
         });
-    </script>
+    
+        // Scroll-linked media movement (project detail)
+        let projectScrollHandler = null;
+
+        function enableProjectMediaScroll() {
+            const detail = document.getElementById('projectDetail');
+            const media = document.querySelector('.project-detail-video');
+            if (!detail || !media) return;
+
+            projectScrollHandler = () => {
+                const scrollY = detail.scrollTop;
+                const offset = Math.min(scrollY * 0.25, 140);
+                media.style.transform = `translateY(${offset}px)`;
+            };
+
+            detail.addEventListener('scroll', projectScrollHandler);
+        }
+
+        function resetProjectMediaScroll() {
+            const detail = document.getElementById('projectDetail');
+            const media = document.querySelector('.project-detail-video');
+            if (detail && projectScrollHandler) {
+                detail.removeEventListener('scroll', projectScrollHandler);
+                projectScrollHandler = null;
+            }
+            if (media) {
+                media.style.transform = 'translateY(0)';
+            }
+        }
+
+</script>
 </body>
 </html>
