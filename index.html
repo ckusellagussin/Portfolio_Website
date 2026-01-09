@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casey Kusella-Gussin - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,13 +15,11 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #ffffff;
             background: #f8f9fa;
         }
-
-
 
         /* Hero Section */
         .hero {
@@ -128,63 +129,53 @@
             margin-bottom: 1rem;
             text-align: left;
         }
+        
         .about-layout {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-}
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
 
-.about-photo {
-    position: relative;
-    width: 220px;
-    border-radius: 16px;
-    overflow: hidden;
-    flex-shrink: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .about-photo {
+            position: relative;
+            width: 220px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.about-photo img {
-    width: 100%;
-    display: block;
-    border-radius: 16px;
-}
+        .about-photo img {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+        }
 
-.about-photo:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
-}
+        .about-photo:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+        }
 
-.photo-caption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-    text-align: center;
-    font-weight: 600;
-    color: white;
-    background: linear-gradient(90deg, #3b82f6, #06b6d4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-.about-photo:hover .photo-caption {
-    opacity: 1;
-}
+        .about-photo:hover .photo-caption {
+            opacity: 1;
+        }
 
-.about-content {
-    flex: 1;
-}
-
-@media (max-width: 900px) {
-    .about-layout {
-        flex-direction: column;
-    }
-
-    .about-photo {
-        margin: 0 auto;
-    }
-}
-
+        .about-content {
+            flex: 1;
+        }
 
         /* Section Styles */
         section {
@@ -463,16 +454,12 @@
             background: #000;
             border-radius: 10px;
             overflow: hidden;
+            position: sticky;
+            top: 24px;
+            will-change: transform;
         }
 
-        
-.project-detail-video {
-    position: sticky;
-    top: 24px;
-    will-change: transform;
-}
-
-.project-detail-video video, .project-detail-video iframe {
+        .project-detail-video video, .project-detail-video iframe {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -715,10 +702,89 @@
             line-height: 1.8;
         }
 
+        .project-repo-link {
+            margin-top: 14px;
+            text-align: center;
+        }
+
+        .project-repo-link a {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: #ffffff;
+            text-decoration: none;
+            opacity: 0.85;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .project-repo-link a:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .repo-title {
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            opacity: 0.9;
+        }
+
+        /* Blog Pagination */
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding: 1rem;
+            grid-column: 1 / -1;
+        }
+
+        .blog-pagination button {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .blog-pagination button:hover:not(:disabled) {
+            background: #3498db;
+        }
+
+        .blog-pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .blog-pagination span {
+            color: #666;
+        }
+
+        .no-posts {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-style: italic;
+            grid-column: 1 / -1;
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .project-detail-content {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .about-layout {
+                flex-direction: column;
+            }
+
+            .about-photo {
+                margin: 0 auto;
             }
         }
 
@@ -747,36 +813,22 @@
             .social-links {
                 order: -1;
             }
+
+            .project-detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .close-detail {
+                align-self: flex-end;
+            }
+            
+            .about-layout {
+                gap: 20px;
+            }
         }
-    
-.project-repo-link {
-    margin-top: 14px;
-    text-align: center;
-}
-
-.project-repo-link a {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    color: #ffffff;
-    text-decoration: none;
-    opacity: 0.85;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.project-repo-link a:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.repo-title {
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    opacity: 0.9;
-}
-
-</style>
+    </style>
 </head>
 <body>
     <!-- Hero Section -->
@@ -824,12 +876,18 @@
     <!-- About Me Section (Home Page) -->
     <section class="about-me" id="homeContent">
         <div class="about-me-content">
-            <p>A London born and based systems designer and programmer, I am currently creating projects that will land me a job as a systems/gameplay programmer and for my own passion of creating my dream RPG with one prototype at a time.
-            I graduated from the University of Plymouth in 2021, worked for Sports Interactive as a QA Tester in 2022 and went on to work as a Build and Release Specialist in 2024.</p>
-            <p>Professionally, I have extensive knowledge of the development pipeline within AAA deverlopment companies as well as extensive version control and software troubleshooting knowledge</p>
-            <p>In my own time, I love working towards developing ideas i'm inspired by in my head. I also freelance as a programmer making mods for the popular colony simulator game Rimworld
-               I will be looking towards improving my programming skills to a professional level as well as improve my game engine knowledge whether it's making my own or learning Unreal Engine</p>
-            <p>Currently exploring opportunities!</p>
+            <div class="about-layout">
+                <div class="about-photo">
+                    <img src="Images/CKG.jpg" alt="Photo of Casey Kusella-Gussin">
+                    <span class="photo-caption">Hello 👋</span>
+                </div>
+                <div class="about-content">
+                    <p>A London born and based systems designer and programmer, I am currently creating projects that will land me a job as a systems/gameplay programmer and for my own passion of creating my dream RPG with one prototype at a time. I graduated from the University of Plymouth in 2021, worked for Sports Interactive as a QA Tester in 2022 and went on to work as a Build and Release Specialist in 2024.</p>
+                    <p>Professionally, I have extensive knowledge of the development pipeline within AAA development companies as well as extensive version control and software troubleshooting knowledge</p>
+                    <p>In my own time, I love working towards developing ideas i'm inspired by in my head. I also freelance as a programmer making mods for the popular colony simulator game Rimworld. I will be looking towards improving my programming skills to a professional level as well as improve my game engine knowledge whether it's making my own or learning Unreal Engine</p>
+                    <p>Currently exploring opportunities!</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -842,7 +900,7 @@
                 </video>
                 <div class="project-info">
                     <h3>Isometric Bow & Arrow Mechanic</h3>
-                    <p>A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics. Focused on responsive input, camera follow, and player feedback.</p>
+                    <p>A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics.</p>
                     <div class="tech-tags">
                         <span class="tag">Unity</span>
                         <span class="tag">C#</span>
@@ -852,10 +910,10 @@
             </div>
 
             <div class="project-card" data-project="project2">
-                <img class="project-video" src="Images/interactive_portfolio_thumbnail.jpg" alt="Interactive Portfolio">
+                <img class="project-video" src="Images/interactive_portfolio_thumbnail.jpg" alt="Interactive Portfolio Museum Environment">
                 <div class="project-info">
                     <h3>Interactive Portfolio</h3>
-                    <p>A fully playable Unity-based interactive portfolio presented as a museum-style experience. Players explore rooms showcasing my skills, experience, and current projects.</p>
+                    <p>A fully playable Unity-based interactive portfolio presented as a museum-style experience.</p>
                     <div class="tech-tags">
                         <span class="tag">Unity</span>
                         <span class="tag">C#</span>
@@ -869,13 +927,12 @@
                     <source src="Videos/ProjectBloodlines.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
-                    <h3>Project Bloodlines - Camera, Control, Character</h3>
-                    <p>The first milestone in a passion project that uses a CRPG control scheme. Inspired by games like Kenshi and Baldur's Gate 3. Focused on learning blueprints and smooth gameplay.</p>
+                    <h3>Project Bloodlines</h3>
+                    <p>A CRPG control prototype inspired by Kenshi and Baldur's Gate 3.</p>
                     <div class="tech-tags">
                         <span class="tag">Unreal Engine 5</span>
                         <span class="tag">C++</span>
                         <span class="tag">Blueprints</span>
-                        <span class="tag">UI</span>
                     </div>
                 </div>
             </div>
@@ -885,10 +942,9 @@
                     <source src="Videos/RimworldFinalProject.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
-                    <h3>God's Oversight (Rimworld Mod)</h3>
-                    <p>A Rimworld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing.</p>
+                    <h3>God's Oversight</h3>
+                    <p>A Rimworld mod focused on trait-driven powers and systemic design.</p>
                     <div class="tech-tags">
-                        <span class="tag">Unity</span>
                         <span class="tag">C#</span>
                         <span class="tag">XML</span>
                         <span class="tag">RimWorld</span>
@@ -896,125 +952,91 @@
                 </div>
             </div>
 
-
             <div class="project-card" data-project="project5">
                 <video class="project-video" autoplay muted loop playsinline>
                     <source src="Videos/Pathfinder.mp4" type="video/mp4">
                 </video>
                 <div class="project-info">
                     <h3>Pathfinder</h3>
-                    <p>A minigame created in the Sports Interactive Gamejam 2024, Focus was on learning Ai pathfinding in a short amount of time</p>
+                    <p>A Sports Interactive Game Jam project focusing on AI pathfinding.</p>
                     <div class="tech-tags">
                         <span class="tag">Unity</span>
-                        <span class="tag">A*</span>
-                        <span class="tag">Gamejam</span>
+                        <span class="tag">AI</span>
+                        <span class="tag">Game Jam</span>
                     </div>
                 </div>
             </div>
-         </div>
-    </section>
         </div>
     </section>
 
+    <!-- About Page -->
     <div class="page-section" id="aboutPage">
-    <div class="page-container">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>About Me</h1>
+                <button class="close-page" onclick="closePage('aboutPage')">Back to Portfolio</button>
+            </div>
 
-        <div class="page-header">
-            <h1>About Me</h1>
-            <button class="close-page" onclick="closePage('aboutPage')">
-                Back to Portfolio
-            </button>
-        </div>
+            <!-- WHO I AM -->
+            <div class="about-section">
+                <h2>Who I Am</h2>
+                <div class="about-layout">
+                    <!-- Text -->
+                    <div class="about-content">
+                        <p>Hello, My name is Casey Kusella-Gussin. As I am writing this, I am 29 years old and currently residing in London, United Kingdom. I have been in love with video games my whole life and I have been blessed to work in the video game industry for two and a half years with the hunger still there.</p>
+                        <p>I went to the University of Plymouth and graduated with a BSc with Honours in Computing and Video Games.</p>
+                        <p>My favourite video games either involve an intensive and urgent story like Mass Effect 2 and Knights of the Old Republic or a mind boggling set of game mechanics and systems such as RimWorld, Path of Exile and Crusader Kings.</p>
+                        <p>My expertise lies in crafting responsive gameplay mechanics, optimizing performance, and collaborating with multidisciplinary teams to bring creative visions to life.</p>
+                    </div>
 
-        <!-- WHO I AM -->
-        <div class="about-section">
-            <h2>Who I Am</h2>
-
-            <div class="about-layout">
-                <!-- Text -->
-                <div class="about-content">
-                    <p>
-                        Hello, My name is Casey Kusella-Gussin. As I am writing this, I am 29 years old and currently
-                        residing in London, United Kingdom. I have been in love with video games my whole life and I
-                        have been blessed to work in the video game industry for two and a half years with the hunger
-                        still there.
-                    </p>
-
-                    <p>
-                        I went to the University of Plymouth and graduated with a BSc with Honours in Computing and
-                        Video Games.
-                    </p>
-
-                    <p>
-                        My favourite video games either involve an intensive and urgent story like Mass Effect 2 and
-                        Knights of the Old Republic or a mind boggling set of game mechanics and systems such as
-                        RimWorld, Path of Exile and Crusader Kings.
-                    </p>
-
-                    <p>
-                        My expertise lies in crafting responsive gameplay mechanics, optimizing performance, and
-                        collaborating with multidisciplinary teams to bring creative visions to life.
-                    </p>
-                </div>
-
-                <!-- Photo -->
-                <div class="about-photo">
-                    <img src="Images/CKG.jpg" alt="Photo of Casey">
-                    <span class="photo-caption">Hello 👋</span>
+                    <!-- Photo -->
+                    <div class="about-photo">
+                        <img src="Images/Graduation.png" alt="Photo of Casey">
+                        <span class="photo-caption">Hello 👋</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- FUN FACTS -->
-        <div class="about-section">
-            <h2>Fun Facts</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h4>I have had work experience at Lionhead Studios and Sony Entertainment London which have both closed down</h4>
-                    <p>Was it my fault?</p>
-                </div>
-                <div class="skill-item">
-                    <h4>My favourite movie trilogy is Lord of the Rings</h4>
-                    <p>Obviously</p>
-                </div>
-                <div class="skill-item">
-                    <h4>My ultimate favourite video game of all time is Star Wars: Knights of the Old Republic</h4>
-                    <p>The beginning of my love for RPGs</p>
-                </div>
-                <div class="skill-item">
-                    <h4>I am double jointed and can bend my finger back and touch the back of my hand</h4>
-                    <p>Eww</p>
-                </div>
-                <div class="skill-item">
-                    <h4>I still get excited for video game reveals even though attending E3 was a dream of mine</h4>
-                    <p>Come back E3</p>
-                </div>
-                <div class="skill-item">
-                    <h4>I used to be a model when I was a baby</h4>
-                    <p>Still have the magazine I was featured in</p>
+            <!-- FUN FACTS -->
+            <div class="about-section">
+                <h2>Fun Facts</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>I have had work experience at Lionhead Studios and Sony Entertainment London which have both closed down</h4>
+                        <p>Was it my fault?</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>My favourite movie trilogy is Lord of the Rings</h4>
+                        <p>Obviously</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>My ultimate favourite video game of all time is Star Wars: Knights of the Old Republic</h4>
+                        <p>The beginning of my love for RPGs</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>I am double jointed and can bend my finger back and touch the back of my hand</h4>
+                        <p>Eww</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>I still get excited for video game reveals even though attending E3 was a dream of mine</h4>
+                        <p>Come back E3!</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>I used to be a model when I was a baby</h4>
+                        <p>Still have the magazine I was featured in</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- INTERESTS -->
-        <div class="about-section">
-            <h2>Interests & Hobbies</h2>
-            <p>
-                I try to create a balanced lifestyle that doesn't involve me locked in my room all day programming,
-                playing games or watching TV.
-            </p>
-            <p>
-                I love football — I’ve been an Arsenal fan since I was around 5 years old and have never regretted
-                supporting them despite a lack of glory for 20 years.
-            </p>
-            <p>
-                I also maintain an active lifestyle and regularly train at the gym, reaching a peak bench of 150kg.
-            </p>
+            <!-- INTERESTS -->
+            <div class="about-section">
+                <h2>Interests & Hobbies</h2>
+                <p>I try to create a balanced lifestyle that doesn't involve me locked in my room all day programming, playing games or watching TV.</p>
+                <p>I love football — I've been an Arsenal fan since I was around 5 years old and have never regretted supporting them despite a lack of glory for 20 years.</p>
+                <p>I also maintain an active lifestyle and regularly train at the gym, reaching a peak bench of 150kg.</p>
+            </div>
         </div>
-
     </div>
-</div>
-
 
     <!-- CV Page -->
     <div class="page-section" id="cvPage">
@@ -1024,71 +1046,70 @@
                 <button class="close-page" onclick="closePage('cvPage')">Back to Portfolio</button>
             </div>
 
-       <div class="cv-section">
-    <h2>Experience</h2>
-    <div class="cv-item">
-        <h3>Data Manager (Build and Release Specialist)</h3>
-        <div class="cv-meta">Ubisoft Reflections • January 2024 – April 2025</div>
-        <ul>
-            <li>Worked across three unannounced projects, including <i>Avatar: Frontiers of Pandora</i></li>
-            <li>Managed Perforce servers including depot setup, branch merging, and permissions</li>
-            <li>Provided troubleshooting support for in-house engines and backend tools</li>
-            <li>Developed internal documentation and onboarding tutorials for Perforce Helix Core</li>
-            <li>Supported low-level build engineering and Kanban-based development workflows</li>
-        </ul>
+            <div class="cv-section">
+                <h2>Experience</h2>
+                <div class="cv-item">
+                    <h3>Data Manager (Build and Release Specialist)</h3>
+                    <div class="cv-meta">Ubisoft Reflections • January 2024 – April 2025</div>
+                    <ul>
+                        <li>Worked across three unannounced projects, including <i>Avatar: Frontiers of Pandora</i></li>
+                        <li>Managed Perforce servers including depot setup, branch merging, and permissions</li>
+                        <li>Provided troubleshooting support for in-house engines and backend tools</li>
+                        <li>Developed internal documentation and onboarding tutorials for Perforce Helix Core</li>
+                        <li>Supported low-level build engineering and Kanban-based development workflows</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h3>QA Tester</h3>
+                    <div class="cv-meta">Sports Interactive • August 2022 – March 2023</div>
+                    <ul>
+                        <li>QA testing for <i>Football Manager 2023</i> and <i>Football Manager 2023 Console</i></li>
+                        <li>Bug tracking and reporting using Jira and TestRail</li>
+                        <li>Community support and live issue tracking</li>
+                        <li>Automation soak testing and console testing workflows</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h3>QA Work Experience</h3>
+                    <div class="cv-meta">Sony Entertainment Europe • July 2013</div>
+                    <ul>
+                        <li>QA testing on <i>Book of Spells</i> and <i>SingStar</i></li>
+                        <li>Assisted with social media and staff interviews</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h3>QA Work Experience</h3>
+                    <div class="cv-meta">Lionhead Studios • March 2011 – May 2011</div>
+                    <ul>
+                        <li>QA testing on <i>Fable 3 (PC)</i>, <i>Fable: The Journey</i>, and <i>Fable Legends</i></li>
+                        <li>Exposure to professional studio pipelines and development culture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Education</h2>
+                <div class="cv-item">
+                    <h3>BSc Computing and Video Game Development</h3>
+                    <div class="cv-meta">University of Plymouth • 2016 – 2021</div>
+                    <p>Second-Class Honours</p>
+                </div>
+            </div>
+
+            <div class="cv-section">
+                <h2>Technical Skills</h2>
+                <div class="cv-item">
+                    <p><strong>Programming:</strong> C#, C++, Blueprints</p>
+                    <p><strong>Game Engines:</strong> Unity, Unreal Engine 5</p>
+                    <p><strong>Tools:</strong> Git (Administration), Perforce (Administration), Jira, Confluence</p>
+                    <p><strong>Specializations:</strong> Gameplay systems, UI systems, Game Modding, Engine workflows</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="cv-item">
-        <h3>QA Tester</h3>
-        <div class="cv-meta">Sports Interactive • August 2022 – March 2023</div>
-        <ul>
-            <li>QA testing for <i>Football Manager 2023</i> and <i>Football Manager 2023 Console</i></li>
-            <li>Bug tracking and reporting using Jira and TestRail</li>
-            <li>Community support and live issue tracking</li>
-            <li>Automation soak testing and console testing workflows</li>
-        </ul>
-    </div>
-
-    <div class="cv-item">
-        <h3>QA Work Experience</h3>
-        <div class="cv-meta">Sony Entertainment Europe • July 2013</div>
-        <ul>
-            <li>QA testing on <i>Book of Spells</i> and <i>SingStar</i></li>
-            <li>Assisted with social media and staff interviews</li>
-        </ul>
-    </div>
-
-    <div class="cv-item">
-        <h3>QA Work Experience</h3>
-        <div class="cv-meta">Lionhead Studios • March 2011 – May 2011</div>
-        <ul>
-            <li>QA testing on <i>Fable 3 (PC)</i>, <i>Fable: The Journey</i>, and <i>Fable Legends</i></li>
-            <li>Exposure to professional studio pipelines and development culture</li>
-        </ul>
-    </div>
-</div>
-
-<div class="cv-section">
-    <h2>Education</h2>
-
-    <div class="cv-item">
-        <h3>BSc Computing and Video Game Development</h3>
-        <div class="cv-meta">University of Plymouth • 2016 – 2021</div>
-        <p>Second-Class Honours</p>
-    </div>
-</div>
-
-<div class="cv-section">
-    <h2>Technical Skills</h2>
-
-    <div class="cv-item">
-        <p><strong>Programming:</strong> C#, C++, Blueprints</p>
-        <p><strong>Game Engines:</strong> Unity, Unreal Engine 5</p>
-        <p><strong>Tools:</strong> Git (Administration), Perforce (Administration), Jira, Confluence</p>
-        <p><strong>Specializations:</strong> Gameplay systems, UI systems, Game Modding, Engine workflows</p>
-    </div>
-</div>
-</div>
 
     <!-- Blog Page -->
     <div class="blog-page" id="blogPage">
@@ -1137,83 +1158,141 @@
 
                     <h3>Project Details</h3>
                     <p id="detailExtra">Additional information about the project.</p>
+                    
+                    <div class="project-repo-link" id="detailRepo"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Project card tilt effect
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                const deltaX = (e.clientX - centerX) / (rect.width / 2);
-                const deltaY = (e.clientY - centerY) / (rect.height / 2);
-                
-                const tiltX = deltaY * 10;
-                const tiltY = -deltaX * 10;
-                const scale = 1.05;
-                
-                card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale}) translateY(-10px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1) translateY(0)';
-            });
-
-            card.addEventListener('click', () => {
-                const projectId = card.getAttribute('data-project');
-                openProjectDetail(projectId);
-            });
-        });
-
-        // Video autoplay
+        // Check for required elements on page load
         document.addEventListener('DOMContentLoaded', () => {
+            const requiredElements = [
+                'homeContent',
+                'projects',
+                'projectDetail',
+                'blogPage',
+                'blogPosts'
+            ];
+            
+            requiredElements.forEach(id => {
+                if (!document.getElementById(id)) {
+                    console.warn(`Required element #${id} not found`);
+                }
+            });
+            
+            // Initialize videos
             const videos = document.querySelectorAll('.project-video');
-
-            const observer = new IntersectionObserver(entries => {
+            
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const video = entry.target;
-                    if (video.tagName === 'VIDEO' && entry.isIntersecting) {
-                        video.muted = true;
-                        video.loop = true;
-                        video.playsInline = true;
-                        
-                        const playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(error => {
-                                console.log('Autoplay prevented:', error);
-                            });
+                    if (video.tagName === 'VIDEO') {
+                        if (entry.isIntersecting) {
+                            // Try to play the video
+                            const playPromise = video.play();
+                            if (playPromise !== undefined) {
+                                playPromise.catch(error => {
+                                    // Autoplay was prevented, mute and try again
+                                    video.muted = true;
+                                    video.play().catch(() => {
+                                        console.log('Video autoplay prevented:', error);
+                                    });
+                                });
+                            }
+                        } else {
+                            // Video is out of view, pause it
+                            video.pause();
                         }
-                    } else if (video.tagName === 'VIDEO') {
-                        video.pause();
                     }
                 });
-            }, { threshold: 0.25 });
+            }, {
+                threshold: 0.25,
+                rootMargin: '0px 0px -50px 0px'
+            });
 
             videos.forEach(video => {
                 if (video.tagName === 'VIDEO') {
-                    observer.observe(video);
+                    // Set video attributes
                     video.muted = true;
                     video.loop = true;
                     video.playsInline = true;
-                    video.play().catch(() => {});
+                    video.preload = 'metadata';
+                    
+                    observer.observe(video);
                 }
             });
             
             loadBlogPosts();
+            
+            // Initialize project card interactions
+            initProjectCards();
         });
+
+        // Project card tilt effect
+        function initProjectCards() {
+            document.querySelectorAll('.project-card').forEach(card => {
+                let frameId = null;
+                
+                card.addEventListener('mousemove', (e) => {
+                    if (frameId) {
+                        cancelAnimationFrame(frameId);
+                    }
+                    
+                    frameId = requestAnimationFrame(() => {
+                        const rect = card.getBoundingClientRect();
+                        const centerX = rect.left + rect.width / 2;
+                        const centerY = rect.top + rect.height / 2;
+                        
+                        const deltaX = (e.clientX - centerX) / (rect.width / 2);
+                        const deltaY = (e.clientY - centerY) / (rect.height / 2);
+                        
+                        const tiltX = deltaY * 5;
+                        const tiltY = -deltaX * 5;
+                        const scale = 1.02;
+                        
+                        card.style.transform = `
+                            perspective(1000px) 
+                            rotateX(${tiltX}deg) 
+                            rotateY(${tiltY}deg) 
+                            scale(${scale}) 
+                            translateY(-5px)
+                        `;
+                        card.style.transition = 'transform 0.1s ease-out';
+                    });
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    if (frameId) {
+                        cancelAnimationFrame(frameId);
+                    }
+                    
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1) translateY(0)';
+                    card.style.transition = 'transform 0.3s ease-out';
+                });
+                
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const projectId = card.getAttribute('data-project');
+                    if (projectId) {
+                        openProjectDetail(projectId);
+                    }
+                });
+            });
+        }
 
         // Page navigation
         function showHome() {
+            // Close all open pages
+            document.querySelectorAll('.page-section, .blog-page, .project-detail, .blog-post-detail').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show home content
             document.getElementById('homeContent').style.display = 'block';
             document.getElementById('projects').style.display = 'block';
-            closePage('aboutPage');
-            closePage('cvPage');
-            closeBlog();
+            document.body.style.overflow = 'auto';
         }
 
         function openAboutPage() {
@@ -1237,7 +1316,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Project detail
+        // Project data
         const projectData = {
             'project1': {
                 title: 'Isometric Bow & Arrow Mechanic',
@@ -1245,42 +1324,21 @@
                 description: 'A gameplay prototype exploring isometric camera control, aiming precision, and physics-driven arrow mechanics. Focused on responsive input, camera follow, and player feedback.',
                 tech: ['Unity', 'C#', 'Physics'],
                 features: ['Isometric camera control', 'Precision aiming system', 'Physics-driven arrow mechanics', 'Responsive player feedback'],
-                extra: `
-<h3>What is it?</h3>
-<p>
-This was an idea that came to me one day after thinking about game mechanics that could be useful to see in a game.
-The isometric bow and arrow mechanic was something I explored as part of a potential passion project using an MMORPG-style
-camera, aiming to support bow gameplay outside of first- or third-person perspectives.
-</p>
-
-<p>
-The mechanic uses a fixed isometric camera where the player aims with the mouse to rotate the character toward the cursor
-and fires an arrow with adjustable trajectory and power. There is intentionally no UI — the goal was to see whether the
-mechanic could be legitimately played at its core. The result is an arcade-style experience that is easy to play, hard to master.
-</p>
-
-<p>
-If the mechanic were to become more realistic, UI elements such as trajectory indicators, power feedback, air resistance,
-and draw speed would likely be required.
-</p>
-
+                extra: `<h3>What is it?</h3>
+<p>This was an idea that came to me one day after thinking about game mechanics that could be useful to see in a game. The isometric bow and arrow mechanic was something I explored as part of a potential passion project using an MMORPG-style camera, aiming to support bow gameplay outside of first- or third-person perspectives.</p>
+<p>The mechanic uses a fixed isometric camera where the player aims with the mouse to rotate the character toward the cursor and fires an arrow with adjustable trajectory and power. There is intentionally no UI — the goal was to see whether the mechanic could be legitimately played at its core. The result is an arcade-style experience that is easy to play, hard to master.</p>
+<p>If the mechanic were to become more realistic, UI elements such as trajectory indicators, power feedback, air resistance, and draw speed would likely be required.</p>
 <h3>What is Done?</h3>
 <ul>
-  <li>Smooth following camera keeping the character centered</li>
-  <li>Instant, adjustable rotation toward the cursor</li>
-  <li>Highly precise aiming through incremental angle and power control</li>
-  <li>Arrows can embed into objects with precision</li>
-  <li>Physically arcing arrow trajectories</li>
+<li>Smooth following camera keeping the character centered</li>
+<li>Instant, adjustable rotation toward the cursor</li>
+<li>Highly precise aiming through incremental angle and power control</li>
+<li>Arrows can embed into objects with precision</li>
+<li>Physically arcing arrow trajectories</li>
 </ul>
-
 <h3>What did I learn?</h3>
-<p>
-Even a seemingly simple mechanic required several supporting systems to feel smooth and responsive.
-Keeping the scope focused helped avoid feature creep and allowed the mechanic to be completed efficiently
-while still delivering meaningful results.
-</p>
-`
-                        
+<p>Even a seemingly simple mechanic required several supporting systems to feel smooth and responsive. Keeping the scope focused helped avoid feature creep and allowed the mechanic to be completed efficiently while still delivering meaningful results.</p>`,
+                github: 'https://github.com/ckusellagussin/project1'
             },
             'project2': {
                 title: 'Interactive Portfolio',
@@ -1289,116 +1347,65 @@ while still delivering meaningful results.
                 description: 'A fully playable Unity-based interactive portfolio presented as a museum-style experience. Players explore rooms showcasing my skills, experience, and current projects.',
                 tech: ['Unity', 'C#', 'WebGL', 'Blender'],
                 features: ['Playable interactive experience', 'Museum-style presentation', 'Embedded HTML5 portfolio', 'Runs directly in-browser'],
-                extra: 
-`
-<h3>What is it?</h3>
-<p>
-The interactive portfolio was designed to be placed on the front page of the website to demonstrate my Unity skills
-and provide a more engaging experience for users viewing my portfolio. The level presents information about myself
-while showcasing my ability to create a lightweight application that can be played directly in the browser.
-</p>
-
+                extra: `<h3>What is it?</h3>
+<p>The interactive portfolio was designed to be placed on the front page of the website to demonstrate my Unity skills and provide a more engaging experience for users viewing my portfolio. The level presents information about myself while showcasing my ability to create a lightweight application that can be played directly in the browser.</p>
 <h3>What is done?</h3>
-<p>
-The level currently consists of five rooms, separated into an introduction, about me, employment, portfolio,
-and current projects. Interactivity is included in the form of free movement through the level, similar to a
-museum experience, as well as interactive buttons that open external links and reveal additional information.
-</p>
-
+<p>The level currently consists of five rooms, separated into an introduction, about me, employment, portfolio, and current projects. Interactivity is included in the form of free movement through the level, similar to a museum experience, as well as interactive buttons that open external links and reveal additional information.</p>
 <h3>What did I learn?</h3>
-<p>
-This project involved significant learning in level design, 3D modelling, and lighting design. The environment
-and several 3D models were created in Blender, while lighting was authored and baked within the Unity Editor.
-Lighting required the most iteration and experimentation to achieve the desired result. Programming was used
-to implement player movement and button-based interactivity. Overall, 3D modelling was the skill that improved
-the most throughout this project.
-</p>
-`
+<p>This project involved significant learning in level design, 3D modelling, and lighting design. The environment and several 3D models were created in Blender, while lighting was authored and baked within the Unity Editor. Lighting required the most iteration and experimentation to achieve the desired result. Programming was used to implement player movement and button-based interactivity. Overall, 3D modelling was the skill that improved the most throughout this project.</p>`,
+                github: 'https://github.com/ckusellagussin/project2'
             },
-             'project3': {
+            'project3': {
                 title: 'Project Bloodlines',
                 video: 'Videos/ProjectBloodlines.mp4',
                 description: 'An ambitious RPG project exploring character lineage systems and generational gameplay mechanics. Features dynasty management and inherited traits across multiple generations.',
                 tech: ['Unity', 'C#', 'RPG Systems'],
-                features: ['Smooth RPG interaction', ''],
+                features: ['Smooth RPG interaction', 'Character lineage system', 'Generational gameplay mechanics'],
                 extra: `<h3>What is it?</h3>
-<p>
-The plan is to create an Action CRPG hybrid that combines the RPG elements of
-<i>Baldur's Gate</i>, <i>Tyranny</i>, and <i>Knights of the Old Republic</i> with the
-combat systems found in <i>Mount &amp; Blade</i>, <i>Exanima</i>, and <i>Mordhau</i>.
-</p>
-
+<p>The plan is to create an Action CRPG hybrid that combines the RPG elements of <i>Baldur's Gate</i>, <i>Tyranny</i>, and <i>Knights of the Old Republic</i> with the combat systems found in <i>Mount &amp; Blade</i>, <i>Exanima</i>, and <i>Mordhau</i>.</p>
 <h3>What has been done so far?</h3>
-<p>
-To avoid feature creep, I defined a clear set of systems and mechanics that needed
-to be completed before moving on to core gameplay. Milestone 1 has now been reached,
-which includes the following:
-</p>
-
+<p>To avoid feature creep, I defined a clear set of systems and mechanics that needed to be completed before moving on to core gameplay. Milestone 1 has now been reached, which includes the following:</p>
 <ul>
-  <li>Camera system</li>
-  <li>Context menu for interactions and information</li>
-  <li>Dynamic movement state system</li>
-  <li>Stamina and fatigue system</li>
-  <li>RPG menu windows for structured information display</li>
+<li>Camera system</li>
+<li>Context menu for interactions and information</li>
+<li>Dynamic movement state system</li>
+<li>Stamina and fatigue system</li>
+<li>RPG menu windows for structured information display</li>
 </ul>
-
 <h3>What have I learned so far and what will I learn?</h3>
-<p>
-Project Bloodlines marks my first significant project developed in Unreal Engine,
-excluding smaller tutorial-based learning projects.
-</p>
-
+<p>Project Bloodlines marks my first significant project developed in Unreal Engine, excluding smaller tutorial-based learning projects.</p>
 <ul>
-  <li>Developed strong familiarity with Blueprints, which have been the primary focus so far</li>
-  <li>Planning to integrate C++ alongside Blueprints for improved performance and scalability</li>
-  <li>Gained substantial experience in UI design, an area not previously explored in other engines</li>
-  <li>Currently learning Unreal Engine’s physics system in preparation for combat implementation</li>
-</ul>
-`
-                
+<li>Developed strong familiarity with Blueprints, which have been the primary focus so far</li>
+<li>Planning to integrate C++ alongside Blueprints for improved performance and scalability</li>
+<li>Gained substantial experience in UI design, an area not previously explored in other engines</li>
+<li>Currently learning Unreal Engine's physics system in preparation for combat implementation</li>
+</ul>`,
+                github: 'https://github.com/ckusellagussin/project3'
             },
             'project4': {
-                title: 'God\'s Oversight',
+                title: "God's Oversight",
                 video: 'Videos/RimworldFinalProject.mp4',
                 description: 'A Rimworld mod where colonists gain unique abilities based on traits and percentage tiers. Focused on systems design, XML modding, and iterative balancing.',
                 tech: ['C#', 'XML Editor', 'dnSpy'],
                 features: ['Trait-based ability system', 'Percentage tier progression', 'Balanced gameplay integration', 'XML configuration system'],
                 extra: `<h3>God's Oversight</h3>
 <p><strong>A RimWorld Mod</strong></p>
-
 <h3>What is it?</h3>
-<p>
-God's Oversight is my final project for the BSc Computing and Video Game Development course.
-The aim of the COMP 3000 module was to demonstrate the ability to build upon knowledge acquired
-throughout previous years of study.
-</p>
-
-<p>
-The goal of this project was to prove I could design and implement a system within a foreign
-codebase. The resulting mod introduces a trait-based power system where colonists gain abilities
-based on their personal traits, using a percentage-based tier system to determine outcomes.
-</p>
-
+<p>God's Oversight is my final project for the BSc Computing and Video Game Development course. The aim of the COMP 3000 module was to demonstrate the ability to build upon knowledge acquired throughout previous years of study.</p>
+<p>The goal of this project was to prove I could design and implement a system within a foreign codebase. The resulting mod introduces a trait-based power system where colonists gain abilities based on their personal traits, using a percentage-based tier system to determine outcomes.</p>
 <h3>What did I learn?</h3>
 <ul>
-  <li>RimWorld modding does not involve using the Unity editor</li>
-  <li>Mods must be tested by saving source files and reloading the game for each iteration</li>
-  <li>Source files are accessed by decompiling the game into separate XML files</li>
-  <li>Locating specific functionality requires searching through individual source elements</li>
-  <li>Limited official documentation necessitated extensive exploration of the game’s codebase</li>
-  <li>The project was initially planned to continue beyond university</li>
-  <li>A later expansion pack significantly expanded upon the concepts explored in the mod
-      .It remains unclear whether the mod influenced the expansion’s design</li>
+<li>RimWorld modding does not involve using the Unity editor</li>
+<li>Mods must be tested by saving source files and reloading the game for each iteration</li>
+<li>Source files are accessed by decompiling the game into separate XML files</li>
+<li>Locating specific functionality requires searching through individual source elements</li>
+<li>Limited official documentation necessitated extensive exploration of the game's codebase</li>
+<li>The project was initially planned to continue beyond university</li>
+<li>A later expansion pack significantly expanded upon the concepts explored in the mod. It remains unclear whether the mod influenced the expansion's design</li>
 </ul>
-
 <h3>Downloads and Awards</h3>
-<p>
-The mod reached the Steam Workshop front page for top subscribers of the week, achieving a peak
-subscriber count of <strong>505 users</strong>. It currently holds a <strong>3/5 star rating</strong>
-based on <strong>26 ratings</strong>, with strong positive engagement within the comments section.
-</p>
-`
+<p>The mod reached the Steam Workshop front page for top subscribers of the week, achieving a peak subscriber count of <strong>505 users</strong>. It currently holds a <strong>3/5 star rating</strong> based on <strong>26 ratings</strong>, with strong positive engagement within the comments section.</p>`,
+                github: 'https://github.com/ckusellagussin/project4'
             },
             'project5': {
                 title: 'Pathfinder',
@@ -1407,42 +1414,25 @@ based on <strong>26 ratings</strong>, with strong positive engagement within the
                 tech: ['Unity', 'C#', 'AI'],
                 features: ['A* pathfinding implementation', 'Visual debugging tools', 'Multiple heuristic options', 'Performance optimization'],
                 extra: `<h3>What is it?</h3>
-<p>
-Pathfinder is a mini-game created during an in-house game jam at Sports Interactive.
-The game jam was designed to encourage colleagues from all disciplines to get involved
-and become familiar with the Unity game engine, which <i>Football Manager 2025</i> is being
-developed in.
-</p>
-
-<p>
-Pathfinder was designed as one of several mini-games in a WarioWare-style experience.
-The game focuses on controlling a ball and navigating past moving obstacles that attempt
-to touch the player, which results in a game over. The objective is to successfully guide
-the ball into the goal to complete the mini-game.
-</p>
-
+<p>Pathfinder is a mini-game created during an in-house game jam at Sports Interactive. The game jam was designed to encourage colleagues from all disciplines to get involved and become familiar with the Unity game engine, which <i>Football Manager 2025</i> is being developed in.</p>
+<p>Pathfinder was designed as one of several mini-games in a WarioWare-style experience. The game focuses on controlling a ball and navigating past moving obstacles that attempt to touch the player, which results in a game over. The objective is to successfully guide the ball into the goal to complete the mini-game.</p>
 <h3>What was done?</h3>
 <ul>
-  <li>Implemented basic movement using physics forces rather than direct translation</li>
-  <li>Created obstacle AI with randomized patrol behavior constrained by level boundaries</li>
-  <li>Implemented a detection system using cone-shaped raycasts to trigger chase behavior</li>
-  <li>Designed obstacle interactions that temporarily disable the player for 5 seconds to prevent clumping</li>
+<li>Implemented basic movement using physics forces rather than direct translation</li>
+<li>Created obstacle AI with randomized patrol behavior constrained by level boundaries</li>
+<li>Implemented a detection system using cone-shaped raycasts to trigger chase behavior</li>
+<li>Designed obstacle interactions that temporarily disable the player for 5 seconds to prevent clumping</li>
 </ul>
-
 <h3>What did I learn?</h3>
-<p>
-The game jam was a valuable team-based development experience. It provided insight into
-collaborative game design and rapid prototyping within a professional environment.
-</p>
-
+<p>The game jam was a valuable team-based development experience. It provided insight into collaborative game design and rapid prototyping within a professional environment.</p>
 <ul>
-  <li>First hands-on experience using Perforce for version control and live asset check-in/out</li>
-  <li>Improved understanding of teamwork and coordination during short development cycles</li>
-  <li>Learned about AI navigation using NavMesh systems</li>
-  <li>Gained experience with layer masking to differentiate between environment, allies, and enemies</li>
-  <li>Developed deeper knowledge of raycasting as a core but performance-sensitive gameplay tool</li>
-</ul>`
-
+<li>First hands-on experience using Perforce for version control and live asset check-in/out</li>
+<li>Improved understanding of teamwork and coordination during short development cycles</li>
+<li>Learned about AI navigation using NavMesh systems</li>
+<li>Gained experience with layer masking to differentiate between environment, allies, and enemies</li>
+<li>Developed deeper knowledge of raycasting as a core but performance-sensitive gameplay tool</li>
+</ul>`,
+                github: 'https://github.com/ckusellagussin/project5'
             }
         };
 
@@ -1450,35 +1440,166 @@ collaborative game design and rapid prototyping within a professional environmen
             const detail = document.getElementById('projectDetail');
             detail.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Reset scroll position
+            detail.scrollTop = 0;
 
-            const data = projectData[projectId] || projectData['project1'];
+            const data = projectData[projectId];
+            if (!data) {
+                console.error('Project data not found:', projectId);
+                return;
+            }
+            
             document.getElementById('detailTitle').textContent = data.title;
 
             const mediaContainer = document.getElementById('detailMedia');
+            mediaContainer.innerHTML = ''; // Clear previous content
+            
             if (data.youtube) {
-                mediaContainer.innerHTML = `<iframe src="${data.youtube}" title="YouTube video player" frameborder="0" allowfullscreen style="width:100%; height:100%; border-radius:10px; border:none;"></iframe>`;
-            } else if (data.embed) {
-                mediaContainer.innerHTML = `<iframe src="${data.iframe}" frameborder="0" allowfullscreen style="width:100%; height:100%; border-radius:10px; border:none;"></iframe>`;
+                mediaContainer.innerHTML = `
+                    <iframe 
+                        src="${data.youtube}?autoplay=1&mute=1" 
+                        title="${data.title} video"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+            } else if (data.embed && data.iframe) {
+                mediaContainer.innerHTML = `
+                    <iframe 
+                        src="${data.iframe}" 
+                        frameborder="0" 
+                        allowfullscreen
+                        title="${data.title} interactive demo">
+                    </iframe>
+                `;
             } else if (data.video) {
-                mediaContainer.innerHTML = `<video controls style="width:100%; height:100%; object-fit:contain;"><source src="${data.video}" type="video/mp4"></video>`;
+                mediaContainer.innerHTML = `
+                    <video 
+                        controls 
+                        autoplay 
+                        muted 
+                        playsinline
+                        style="width:100%; height:100%; object-fit:contain;">
+                        <source src="${data.video}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            } else if (data.image) {
+                mediaContainer.innerHTML = `
+                    <img 
+                        src="${data.image}" 
+                        alt="${data.title}"
+                        style="width:100%; height:100%; object-fit:cover;">
+                `;
             }
 
             document.getElementById('detailDescription').textContent = data.description;
-            document.getElementById('detailExtra').innerHTML = data.extra;
-            document.getElementById('detailTech').innerHTML = data.tech.map(t => `<li>${t}</li>`).join('');
-            document.getElementById('detailFeatures').innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
+            document.getElementById('detailExtra').innerHTML = data.extra || '';
+            
+            // Handle technologies list
+            const techList = document.getElementById('detailTech');
+            techList.innerHTML = '';
+            if (data.tech && Array.isArray(data.tech)) {
+                data.tech.forEach(tech => {
+                    const li = document.createElement('li');
+                    li.textContent = tech;
+                    techList.appendChild(li);
+                });
+            }
+            
+            // Handle features list
+            const featuresList = document.getElementById('detailFeatures');
+            featuresList.innerHTML = '';
+            if (data.features && Array.isArray(data.features)) {
+                data.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+            }
+            
+            // Handle GitHub repository link
+            const repoContainer = document.getElementById('detailRepo');
+            if (data.github) {
+                repoContainer.innerHTML = `
+                    <a href="${data.github}" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <div class="repo-title">View Repository</div>
+                    </a>
+                `;
+            } else {
+                repoContainer.innerHTML = '';
+            }
+            
             enableProjectMediaScroll();
         }
 
         function closeProjectDetail() {
-            const video = document.getElementById('detailVideo');
-            if (video) {
-                video.pause();
-                video.currentTime = 0;
+            // Stop all media
+            const mediaContainer = document.getElementById('detailMedia');
+            if (mediaContainer) {
+                const video = mediaContainer.querySelector('video');
+                const iframe = mediaContainer.querySelector('iframe');
+                
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+                
+                if (iframe) {
+                    // Reset iframe source to stop any playing content
+                    const src = iframe.src;
+                    iframe.src = '';
+                    iframe.src = src;
+                }
             }
+            
             resetProjectMediaScroll();
             document.getElementById('projectDetail').classList.remove('active');
             document.body.style.overflow = 'auto';
+        }
+
+        // Scroll-linked media movement (project detail)
+        let projectScrollHandler = null;
+
+        function enableProjectMediaScroll() {
+            const detail = document.getElementById('projectDetail');
+            const media = document.querySelector('.project-detail-video');
+            
+            if (!detail || !media) return;
+            
+            // Remove existing handler if any
+            if (projectScrollHandler) {
+                detail.removeEventListener('scroll', projectScrollHandler);
+            }
+            
+            projectScrollHandler = () => {
+                const scrollY = detail.scrollTop || 0;
+                const offset = Math.min(scrollY * 0.25, 140);
+                media.style.transform = `translateY(${offset}px)`;
+            };
+            
+            detail.addEventListener('scroll', projectScrollHandler);
+            // Trigger once to set initial position
+            projectScrollHandler();
+        }
+
+        function resetProjectMediaScroll() {
+            const detail = document.getElementById('projectDetail');
+            const media = document.querySelector('.project-detail-video');
+            
+            if (detail && projectScrollHandler) {
+                detail.removeEventListener('scroll', projectScrollHandler);
+                projectScrollHandler = null;
+            }
+            
+            if (media) {
+                media.style.transform = 'translateY(0)';
+            }
         }
 
         // Blog system
@@ -1490,22 +1611,93 @@ collaborative game design and rapid prototyping within a professional environmen
                 readTime: "8 min read",
                 excerpt: "An introduction to the fundamentals of gameplay programming and building engaging game mechanics.",
                 tags: ["Programming", "Game Design", "Tutorial"],
-                content: `<h2>Introduction</h2><p>Gameplay programming is where mechanics come to life. Understanding player input, state management, and the game loop are essential foundations.</p>`
+                content: `<h2>Introduction</h2>
+<p>Gameplay programming is where mechanics come to life. Understanding player input, state management, and the game loop are essential foundations.</p>
+<h2>Core Concepts</h2>
+<p>The most important aspect of gameplay programming is creating responsive and intuitive interactions. This involves understanding player psychology, input handling, and feedback systems.</p>
+<h2>Best Practices</h2>
+<ul>
+<li>Keep your code modular and reusable</li>
+<li>Implement proper error handling</li>
+<li>Optimize for performance early</li>
+<li>Test across different input devices</li>
+</ul>`
             }
         ];
 
+        let currentBlogPage = 1;
+        const blogPostsPerPage = 6;
+
         function loadBlogPosts() {
             const container = document.getElementById('blogPosts');
-            container.innerHTML = blogPostsData.map(post => `
-                <div class="blog-post" onclick="openBlogPost(${post.id})">
-                    <div class="blog-post-date">${post.date}</div>
-                    <h3>${post.title}</h3>
-                    <p class="blog-post-excerpt">${post.excerpt}</p>
-                    <div class="blog-post-tags">
-                        ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (!blogPostsData || blogPostsData.length === 0) {
+                container.innerHTML = `
+                    <div class="no-posts">
+                        <p>No blog posts yet. Check back soon!</p>
                     </div>
-                </div>
-            `).join('');
+                `;
+                return;
+            }
+            
+            // Calculate which posts to show
+            const startIndex = (currentBlogPage - 1) * blogPostsPerPage;
+            const endIndex = startIndex + blogPostsPerPage;
+            const postsToShow = blogPostsData.slice(startIndex, endIndex);
+            
+            postsToShow.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'blog-post';
+                postElement.setAttribute('data-post-id', post.id);
+                postElement.innerHTML = `
+                    <div class="blog-post-date">${post.date || 'No date'}</div>
+                    <h3>${post.title || 'Untitled'}</h3>
+                    <p class="blog-post-excerpt">${post.excerpt || 'No excerpt available.'}</p>
+                    <div class="blog-post-tags">
+                        ${(post.tags && post.tags.length > 0) 
+                            ? post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('') 
+                            : '<span class="blog-tag">General</span>'}
+                    </div>
+                `;
+                
+                postElement.addEventListener('click', () => openBlogPost(post.id));
+                container.appendChild(postElement);
+            });
+            
+            // Add pagination if needed
+            if (blogPostsData.length > blogPostsPerPage) {
+                addBlogPagination();
+            }
+        }
+
+        function addBlogPagination() {
+            const container = document.getElementById('blogPosts');
+            const totalPages = Math.ceil(blogPostsData.length / blogPostsPerPage);
+            
+            const pagination = document.createElement('div');
+            pagination.className = 'blog-pagination';
+            pagination.innerHTML = `
+                <button ${currentBlogPage <= 1 ? 'disabled' : ''} onclick="changeBlogPage(${currentBlogPage - 1})">
+                    Previous
+                </button>
+                <span>Page ${currentBlogPage} of ${totalPages}</span>
+                <button ${currentBlogPage >= totalPages ? 'disabled' : ''} onclick="changeBlogPage(${currentBlogPage + 1})">
+                    Next
+                </button>
+            `;
+            
+            container.appendChild(pagination);
+        }
+
+        function changeBlogPage(page) {
+            if (page < 1 || page > Math.ceil(blogPostsData.length / blogPostsPerPage)) {
+                return;
+            }
+            currentBlogPage = page;
+            loadBlogPosts();
         }
 
         function openBlog() {
@@ -1524,59 +1716,42 @@ collaborative game design and rapid prototyping within a professional environmen
 
         function openBlogPost(postId) {
             const post = blogPostsData.find(p => p.id === postId);
-            if (!post) return;
+            if (!post) {
+                console.error('Blog post not found:', postId);
+                return;
+            }
 
-            document.getElementById('blogPostTitle').textContent = post.title;
-            document.getElementById('blogPostDate').textContent = post.date;
-            document.getElementById('blogPostReadTime').textContent = post.readTime;
-            document.getElementById('blogPostContent').innerHTML = post.content;
+            document.getElementById('blogPostTitle').textContent = post.title || 'Untitled';
+            document.getElementById('blogPostDate').textContent = post.date || 'No date';
+            document.getElementById('blogPostReadTime').textContent = post.readTime || '5 min read';
+            document.getElementById('blogPostContent').innerHTML = post.content || '<p>Content not available.</p>';
+            
             document.getElementById('blogPostDetail').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeBlogPost() {
             document.getElementById('blogPostDetail').classList.remove('active');
+            document.body.style.overflow = 'hidden';
         }
 
         // ESC key handler
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeProjectDetail();
-                closePage('aboutPage');
-                closePage('cvPage');
-                closeBlog();
-                closeBlogPost();
+                // Check what's currently open and close it
+                if (document.getElementById('projectDetail').classList.contains('active')) {
+                    closeProjectDetail();
+                } else if (document.getElementById('blogPostDetail').classList.contains('active')) {
+                    closeBlogPost();
+                } else if (document.getElementById('aboutPage').classList.contains('active')) {
+                    closePage('aboutPage');
+                } else if (document.getElementById('cvPage').classList.contains('active')) {
+                    closePage('cvPage');
+                } else if (document.getElementById('blogPage').classList.contains('active')) {
+                    closeBlog();
+                }
             }
         });
-    
-        // Scroll-linked media movement (project detail)
-        let projectScrollHandler = null;
-
-        function enableProjectMediaScroll() {
-            const detail = document.getElementById('projectDetail');
-            const media = document.querySelector('.project-detail-video');
-            if (!detail || !media) return;
-
-            projectScrollHandler = () => {
-                const scrollY = detail.scrollTop;
-                const offset = Math.min(scrollY * 0.25, 140);
-                media.style.transform = `translateY(${offset}px)`;
-            };
-
-            detail.addEventListener('scroll', projectScrollHandler);
-        }
-
-        function resetProjectMediaScroll() {
-            const detail = document.getElementById('projectDetail');
-            const media = document.querySelector('.project-detail-video');
-            if (detail && projectScrollHandler) {
-                detail.removeEventListener('scroll', projectScrollHandler);
-                projectScrollHandler = null;
-            }
-            if (media) {
-                media.style.transform = 'translateY(0)';
-            }
-        }
-
-</script>
+    </script>
 </body>
 </html>
