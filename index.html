@@ -1111,6 +1111,7 @@
         </div>
     </div>
 
+    
     <!-- Blog Page -->
     <div class="blog-page" id="blogPage">
         <div class="blog-container">
@@ -1165,7 +1166,7 @@
         </div>
     </div>
 
-    <script>
+        <script>
         // Check for required elements on page load
         document.addEventListener('DOMContentLoaded', () => {
             const requiredElements = [
@@ -1224,10 +1225,11 @@
                 }
             });
             
-            loadBlogPosts();
-            
             // Initialize project card interactions
             initProjectCards();
+            
+            // Initialize blog posts (but don't load them yet)
+            initializeBlog();
         });
 
         // Project card tilt effect
@@ -1436,6 +1438,153 @@
             }
         };
 
+        // Blog posts data - SINGLE DEFINITION
+        const blogPostsData = [
+            {
+                id: 1,
+                title: "Getting Started with Gameplay Programming",
+                date: "January 5, 2026",
+                readTime: "8 min read",
+                excerpt: "An introduction to the fundamentals of gameplay programming and building engaging game mechanics.",
+                tags: ["Programming", "Game Design", "Tutorial"],
+                content: `<h2>Introduction</h2>
+<p>Gameplay programming is where mechanics come to life. Understanding player input, state management, and the game loop are essential foundations.</p>
+<h2>Core Concepts</h2>
+<p>The most important aspect of gameplay programming is creating responsive and intuitive interactions. This involves understanding player psychology, input handling, and feedback systems.</p>
+<h2>Best Practices</h2>
+<ul>
+<li>Keep your code modular and reusable</li>
+<li>Implement proper error handling</li>
+<li>Optimize for performance early</li>
+<li>Test across different input devices</li>
+</ul>`
+            }
+        ];
+
+        let currentBlogPage = 1;
+        const blogPostsPerPage = 6;
+
+        // Initialize blog system
+        function initializeBlog() {
+            // Check if blogPostsData exists
+            if (typeof blogPostsData === 'undefined') {
+                console.error('blogPostsData is not defined!');
+                return;
+            }
+            console.log('Blog posts data loaded:', blogPostsData.length, 'posts');
+        }
+
+        function loadBlogPosts() {
+            const container = document.getElementById('blogPosts');
+            if (!container) {
+                console.error('Blog posts container not found!');
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            if (!blogPostsData || blogPostsData.length === 0) {
+                container.innerHTML = `
+                    <div class="no-posts">
+                        <p>No blog posts yet. Check back soon!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Calculate which posts to show
+            const startIndex = (currentBlogPage - 1) * blogPostsPerPage;
+            const endIndex = startIndex + blogPostsPerPage;
+            const postsToShow = blogPostsData.slice(startIndex, endIndex);
+            
+            postsToShow.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'blog-post';
+                postElement.setAttribute('data-post-id', post.id);
+                postElement.innerHTML = `
+                    <div class="blog-post-date">${post.date || 'No date'}</div>
+                    <h3>${post.title || 'Untitled'}</h3>
+                    <p class="blog-post-excerpt">${post.excerpt || 'No excerpt available.'}</p>
+                    <div class="blog-post-tags">
+                        ${(post.tags && post.tags.length > 0) 
+                            ? post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('') 
+                            : '<span class="blog-tag">General</span>'}
+                    </div>
+                `;
+                
+                postElement.addEventListener('click', () => openBlogPost(post.id));
+                container.appendChild(postElement);
+            });
+            
+            // Add pagination if needed
+            if (blogPostsData.length > blogPostsPerPage) {
+                addBlogPagination();
+            }
+        }
+
+        function addBlogPagination() {
+            const container = document.getElementById('blogPosts');
+            const totalPages = Math.ceil(blogPostsData.length / blogPostsPerPage);
+            
+            const pagination = document.createElement('div');
+            pagination.className = 'blog-pagination';
+            pagination.innerHTML = `
+                <button ${currentBlogPage <= 1 ? 'disabled' : ''} onclick="changeBlogPage(${currentBlogPage - 1})">
+                    Previous
+                </button>
+                <span>Page ${currentBlogPage} of ${totalPages}</span>
+                <button ${currentBlogPage >= totalPages ? 'disabled' : ''} onclick="changeBlogPage(${currentBlogPage + 1})">
+                    Next
+                </button>
+            `;
+            
+            container.appendChild(pagination);
+        }
+
+        function changeBlogPage(page) {
+            if (page < 1 || page > Math.ceil(blogPostsData.length / blogPostsPerPage)) {
+                return;
+            }
+            currentBlogPage = page;
+            loadBlogPosts();
+        }
+
+        function openBlog() {
+            loadBlogPosts(); // Load posts when opening blog
+            document.getElementById('blogPage').classList.add('active');
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('projects').style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlog() {
+            document.getElementById('blogPage').classList.remove('active');
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('projects').style.display = 'block';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openBlogPost(postId) {
+            const post = blogPostsData.find(p => p.id === postId);
+            if (!post) {
+                console.error('Blog post not found:', postId);
+                return;
+            }
+
+            document.getElementById('blogPostTitle').textContent = post.title || 'Untitled';
+            document.getElementById('blogPostDate').textContent = post.date || 'No date';
+            document.getElementById('blogPostReadTime').textContent = post.readTime || '5 min read';
+            document.getElementById('blogPostContent').innerHTML = post.content || '<p>Content not available.</p>';
+            
+            document.getElementById('blogPostDetail').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlogPost() {
+            document.getElementById('blogPostDetail').classList.remove('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         function openProjectDetail(projectId) {
             const detail = document.getElementById('projectDetail');
             detail.classList.add('active');
@@ -1600,118 +1749,6 @@
             if (media) {
                 media.style.transform = 'translateY(0)';
             }
-        }
-
-        // Blog system
-
-        let currentBlogPage = 1;
-        const blogPostsPerPage = 6;
-
-        function loadBlogPosts() {
-            const container = document.getElementById('blogPosts');
-            if (!container) return;
-            
-            container.innerHTML = '';
-            
-            if (!blogPostsData || blogPostsData.length === 0) {
-                container.innerHTML = `
-                    <div class="no-posts">
-                        <p>No blog posts yet. Check back soon!</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            // Calculate which posts to show
-            const startIndex = (currentBlogPage - 1) * blogPostsPerPage;
-            const endIndex = startIndex + blogPostsPerPage;
-            const postsToShow = blogPostsData.slice(startIndex, endIndex);
-            
-            postsToShow.forEach(post => {
-                const postElement = document.createElement('div');
-                postElement.className = 'blog-post';
-                postElement.setAttribute('data-post-id', post.id);
-                postElement.innerHTML = `
-                    <div class="blog-post-date">${post.date || 'No date'}</div>
-                    <h3>${post.title || 'Untitled'}</h3>
-                    <p class="blog-post-excerpt">${post.excerpt || 'No excerpt available.'}</p>
-                    <div class="blog-post-tags">
-                        ${(post.tags && post.tags.length > 0) 
-                            ? post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('') 
-                            : '<span class="blog-tag">General</span>'}
-                    </div>
-                `;
-                
-                postElement.addEventListener('click', () => openBlogPost(post.id));
-                container.appendChild(postElement);
-            });
-            
-            // Add pagination if needed
-            if (blogPostsData.length > blogPostsPerPage) {
-                addBlogPagination();
-            }
-        }
-
-        function addBlogPagination() {
-            const container = document.getElementById('blogPosts');
-            const totalPages = Math.ceil(blogPostsData.length / blogPostsPerPage);
-            
-            const pagination = document.createElement('div');
-            pagination.className = 'blog-pagination';
-            pagination.innerHTML = `
-                <button ${currentBlogPage <= 1 ? 'disabled' : ''} onclick="changeBlogPage(${currentBlogPage - 1})">
-                    Previous
-                </button>
-                <span>Page ${currentBlogPage} of ${totalPages}</span>
-                <button ${currentBlogPage >= totalPages ? 'disabled' : ''} onclick="changeBlogPage(${currentBlogPage + 1})">
-                    Next
-                </button>
-            `;
-            
-            container.appendChild(pagination);
-        }
-
-        function changeBlogPage(page) {
-            if (page < 1 || page > Math.ceil(blogPostsData.length / blogPostsPerPage)) {
-                return;
-            }
-            currentBlogPage = page;
-            loadBlogPosts();
-        }
-
-        function openBlog() {
-            document.getElementById('blogPage').classList.add('active');
-            document.getElementById('homeContent').style.display = 'none';
-            document.getElementById('projects').style.display = 'none';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeBlog() {
-            document.getElementById('blogPage').classList.remove('active');
-            document.getElementById('homeContent').style.display = 'block';
-            document.getElementById('projects').style.display = 'block';
-            document.body.style.overflow = 'auto';
-        }
-
-        function openBlogPost(postId) {
-            const post = blogPostsData.find(p => p.id === postId);
-            if (!post) {
-                console.error('Blog post not found:', postId);
-                return;
-            }
-
-            document.getElementById('blogPostTitle').textContent = post.title || 'Untitled';
-            document.getElementById('blogPostDate').textContent = post.date || 'No date';
-            document.getElementById('blogPostReadTime').textContent = post.readTime || '5 min read';
-            document.getElementById('blogPostContent').innerHTML = post.content || '<p>Content not available.</p>';
-            
-            document.getElementById('blogPostDetail').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeBlogPost() {
-            document.getElementById('blogPostDetail').classList.remove('active');
-            document.body.style.overflow = 'hidden';
         }
 
         // ESC key handler
