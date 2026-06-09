@@ -1035,7 +1035,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-project="boogeyman2" onclick="openProjectDetail('boogeyman2')" role="button" tabindex="0" style="cursor:pointer;">
+                <div class="project-card" data-project="boogeyman1" onclick="openProjectDetail('boogeyman1')" role="button" tabindex="0" style="cursor:pointer;">
                     <div class="project-video" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem;">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         <span style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;">TryHackMe</span>
@@ -1051,35 +1051,35 @@
                         </div>
                     </div>
                 </div>
+                <div class="project-card" data-project="boogeyman2" onclick="openProjectDetail('boogeyman2')" role="button" tabindex="0" style="cursor:pointer;">
+                    <div class="project-video" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem;">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;">TryHackMe</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>Boogeyman 2</h3>
+                        <p>A TryHackMe write-up covering email attachment analysis and raw memory analysis using Volatility and olevba.</p>
+                        <div class="tech-tags">
+                            <span class="tag">TryHackMe</span>
+                            <span class="tag">Volatility</span>
+                            <span class="tag">Olevba</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-card" data-project="boogeyman3" onclick="openProjectDetail('boogeyman3')" role="button" tabindex="0" style="cursor:pointer;">
                     <div class="project-video" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem;">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         <span style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;">TryHackMe</span>
                     </div>
-
                     <div class="project-info">
-                        <h3>Boogeyman 2</h3>
-                        <p>A TryHackMe write-up covering email attachment analysis and raw memory analysis.</p>
+                        <h3>Boogeyman 3</h3>
+                        <p>A TryHackMe write-up covering Elastic-based analysis of whaling, persistence, lateral movement, and ransomware.</p>
                         <div class="tech-tags">
                             <span class="tag">TryHackMe</span>
-                            <span class="tag">Memory Analysis</span>
+                            <span class="tag">Elastic</span>
                         </div>
                     </div>
                 </div>
-<div class="project-card" data-project="boogeyman3" onclick="openProjectDetail('boogeyman3')" role="button" tabindex="0" style="cursor:pointer;">
-    <div class="project-video" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem;">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        <span style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;">TryHackMe</span>
-    </div>
-    <div class="project-info">
-        <h3>Boogeyman 3</h3>
-        <p>A TryHackMe write-up covering Elastic-based analysis of whaling, persistence, lateral movement, and ransomware.</p>
-        <div class="tech-tags">
-            <span class="tag">TryHackMe</span>
-            <span class="tag">Elastic</span>
-        </div>
-    </div>
-</div>
 
     
     <!-- Blog Page -->
@@ -1584,7 +1584,7 @@ function showHome() {
                 github: 'https://github.com/ckusellagussin/project5'
             }
             ,
-        'boogeyman2': {
+        'boogeyman1': {
             title: 'Boogeyman 1',
             description: 'A TryHackMe write-up covering packet analysis, DNS extraction, and decoding exfiltrated data with CyberChef.',
             tech: ['TryHackMe', 'tshark', 'CyberChef', 'KeePass2'],
@@ -1788,6 +1788,123 @@ tshark -r capture.pcapng -Y 'dns' -T fields -e dns.qry.name | grep ".bpakcaging.
 <p>This is the first challenge of the Boogeyman capstone challenges by TryHackMe.</p>
 <p>I was able to confidently analyse email headers and PowerShell logs. When I got to two certain questions — what software the server was using and what the credit card number was — I struggled more when analysing the network traffic, and it required a fair bit of external research. I'm not ashamed that I had to do research, because that is going to happen when I am unfamiliar with certain patterns, such as hex being exfiltrated, but it is definitely going to be a pattern I will recognise more easily in the future.</p>
 <p>I look forward to the other two Boogeyman challenges and may do a write-up on them too.</p>`,
+            github: ''
+        },
+        'boogeyman2': {
+            title: 'Boogeyman 2',
+            description: 'A TryHackMe write-up covering email source analysis, VBA macro extraction with olevba, and raw memory analysis with Volatility.',
+            tech: ['TryHackMe', 'Volatility', 'Olevba', 'Evolution'],
+            features: ['Email header analysis', 'VBA macro extraction', 'Raw memory analysis'],
+            extra: `<h2>Boogeyman 2</h2>
+<blockquote><p><strong>Room Overview:</strong> After having a severe attack from the Boogeyman, Quick Logistics LLC improved its security defences. However, the Boogeyman returns with new and improved tactics, techniques and procedures.</p></blockquote>
+<h2>Artifacts Used</h2>
+<ul>
+<li><code>Copy of Phishing Email</code></li>
+<li><code>Memory Dump of Victim's Workstation</code></li>
+</ul>
+<hr>
+<h2>Tools Used</h2>
+<ul>
+<li><code>Volatility</code> - An open-source framework for extracting digital artefacts from volatile memory (RAM) samples.</li>
+<li><code>olevba</code> - A tool for analysing and extracting VBA macros from Microsoft Office documents.</li>
+</ul>
+<hr>
+<h2>Notes</h2>
+<p>This is the second room within the Boogeyman series. The Boogeyman series continues to focus on phishing attacks and analysis. I have not used many memory-analysis tools before, so I will do my best to understand the evidence and research anything I need along the way.</p>
+<hr>
+<h2>Introduction</h2>
+<p>This room has a very small introduction and doesn't give you much of a scenario. There is also one continuous page of tasks (up to 15 questions).</p>
+<p>Maxine, a human resources specialist working for the same logistics company from Boogeyman 1, received an application for an open position in the company. The email is as follows:</p>
+<img src="Images/Pasted%20image%2020260606231804.png" alt="Phishing email received by Maxine" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p>The security team was alerted to suspicious commands on Maxine's workstation, so our job is to investigate if the alerts are a true positive and how the attacker was able to access the workstation/network, as well as what damage was committed.</p>
+<hr>
+<h3>Question 1</h3>
+<p><strong>Question:</strong> What email was used to send the phishing email?</p>
+<p><strong>Walkthrough:</strong> We don't have the Thunderbird client from the previous room so I will be using Evolution. I open up the message source to view the email headers and scroll down to find the attacker's email address.</p>
+<img src="Images/Pasted%20image%2020260606235552.png" alt="Attacker email address in message source" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer: westaylor23@outlook[.]com</strong></p>
+<h3>Question 2</h3>
+<p><strong>Question:</strong> What is the email of the victim employee?</p>
+<p><strong>Walkthrough:</strong> Within that same image, the victim's email address is visible just a line down from the sender.</p>
+<p><strong>Answer: maxine.beck@quicklogisticsorg[.]onmicrosoft[.]com</strong></p>
+<h3>Question 3</h3>
+<p><strong>Question:</strong> What is the name of the attached malicious document?</p>
+<p><strong>Walkthrough:</strong> The attachment is labelled as the attacker's resume.</p>
+<img src="Images/Pasted%20image%2020260607000333.png" alt="Malicious resume attachment" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer: Resume_WesleyTaylor.doc</strong></p>
+<h3>Question 4</h3>
+<p><strong>Question:</strong> What is the MD5 hash of the malicious attachment?</p>
+<p><strong>Walkthrough:</strong> Using a VM supplied by THM, I open the terminal in the saved document location and run:</p>
+<pre><code>md5sum 'Resume_WesleyTaylor.doc'</code></pre>
+<img src="Images/Pasted%20image%2020260607001235.png" alt="MD5 hash of malicious document" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer: 52c4384a0b9e248b95804352ebec6c5b</strong></p>
+<h3>Question 5</h3>
+<p><strong>Question:</strong> What URL is used to download the stage 2 payload based on the document's macro?</p>
+<p><strong>Walkthrough:</strong> Using olevba to analyse the macro in the document returns interesting details, including the URL used to download the next stage.</p>
+<img src="Images/Pasted%20image%2020260607002149.png" alt="olevba output showing macro and download URL" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p>The macro downloads a PNG file obfuscated as a JavaScript file and then executes it. There is only one URL in the macro.</p>
+<p><strong>Answer: hxxps://files.boogeymanisback[.]lol/aa2a9c53cbb80416d3b47d85538d9971/update[.]png</strong></p>
+<h3>Question 6</h3>
+<p><strong>Question:</strong> What is the name of the process that executed the newly downloaded stage 2 payload?</p>
+<p><strong>Walkthrough:</strong> The last line of the macro executes the downloaded script.</p>
+<img src="Images/Pasted%20image%2020260607003043.png" alt="Macro last line executing the stage 2 payload" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer: wscript.exe</strong></p>
+<h3>Question 7</h3>
+<p><strong>Question:</strong> What is the full file path of the malicious stage 2 payload?</p>
+<p><strong>Walkthrough:</strong> The payload was executed within ProgramData, visible next to the process name.</p>
+<img src="Images/Pasted%20image%2020260607003617.png" alt="Stage 2 payload file path in ProgramData" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer:</strong> <code>C:\\ProgramData\\update.js</code></p>
+<h3>Question 8</h3>
+<p><strong>Question:</strong> What is the PID of the process that executed the stage 2 payload?</p>
+<p><strong>Walkthrough:</strong> Switching to Volatility to analyse the memory dump. Using the pslist plugin to list all processes:</p>
+<pre><code>vol -f WKSTN-2961.raw windows.pslist</code></pre>
+<img src="Images/Pasted%20image%2020260607005157.png" alt="Volatility pslist output showing wscript.exe PID" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer: 4260</strong></p>
+<h3>Question 9</h3>
+<p><strong>Question:</strong> What is the parent PID of the process that executed the stage 2 payload?</p>
+<p><strong>Walkthrough:</strong> The PPID column is directly to the right of the PID in the pslist output.</p>
+<p><strong>Answer: 1124</strong></p>
+<h3>Question 10</h3>
+<p><strong>Question:</strong> What URL is used to download the malicious binary executed by the stage 2 payload?</p>
+<p><strong>Walkthrough:</strong> The PNG file downloaded earlier was actually an executable JavaScript file. The URL for the binary is also within the macro output.</p>
+<p><strong>Answer: hxxps://files.boogeymanisback[.]lol/aa2a9c53cbb80416d3b47d85538d9971/update[.]exe</strong></p>
+<h3>Question 11</h3>
+<p><strong>Question:</strong> What is the PID of the malicious process used to establish the C2 connection?</p>
+<p><strong>Walkthrough:</strong> The macro establishes a C2 connection via a reverse shell. Using the netscan plugin to find network objects:</p>
+<img src="Images/Pasted%20image%2020260607120509.png" alt="Macro reverse shell section" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<img src="Images/Pasted%20image%2020260607124001.png" alt="Volatility plugin documentation for netscan" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<pre><code>vol -f WKSTN-2961.raw windows.netscan</code></pre>
+<img src="Images/Pasted%20image%2020260607124559.png" alt="netscan output showing updater.exe PID" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer: 6216</strong></p>
+<h3>Question 12</h3>
+<p><strong>Question:</strong> What is the full file path of the malicious process used to establish the C2 connection?</p>
+<p><strong>Walkthrough:</strong> Using the filescan plugin with grep to find updater.exe:</p>
+<img src="Images/Pasted%20image%2020260607125427.png" alt="Volatility filescan plugin" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<pre><code>vol -f WKSTN-2961.raw windows.filescan | grep 'updater.exe'</code></pre>
+<img src="Images/Pasted%20image%2020260607130319.png" alt="filescan output showing updater.exe full path" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer:</strong> <code>C:\\Windows\\Tasks\\updater.exe</code></p>
+<h3>Question 13</h3>
+<p><strong>Question:</strong> What is the IP address and port of the C2 connection initiated by the malicious binary? (Format: IP address:port)</p>
+<p><strong>Walkthrough:</strong> The netscan results from earlier also include the destination IP and port for updater.exe.</p>
+<img src="Images/Pasted%20image%2020260607131322.png" alt="netscan output showing C2 IP and port" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer: 128.199.95.189:8080</strong></p>
+<h3>Question 14</h3>
+<p><strong>Question:</strong> What is the full file path of the malicious email attachment based on the memory dump?</p>
+<p><strong>Walkthrough:</strong> Using filescan with grep to locate the resume attachment:</p>
+<pre><code>vol -f WKSTN-2961.raw windows.filescan | grep 'Resume_WesleyTaylor'</code></pre>
+<img src="Images/Pasted%20image%2020260607132529.png" alt="filescan output showing attachment file path" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p><strong>Answer:</strong> <code>C:\\Users\\maxine.beck\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Content.Outlook\\WQHGZCFI\\Resume_WesleyTaylor (002).doc</code></p>
+<h3>Question 15</h3>
+<p><strong>Question:</strong> The attacker implanted a scheduled task right after establishing the C2 callback. What is the full command used by the attacker to maintain persistent access?</p>
+<p><strong>Walkthrough:</strong> Searching the raw file for schtasks as a string:</p>
+<pre><code>strings WKSTN-2961.raw | grep 'schtasks'</code></pre>
+<img src="Images/Pasted%20image%2020260607133104.png" alt="Scheduled task plugin attempt" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<img src="Images/Pasted%20image%2020260607135112.png" alt="schtasks strings output revealing the scheduled task command" loading="lazy" style="max-width:50%;height:auto;border-radius:8px;margin:0.75rem 0;display:block;">
+<p>The grouped base64 section and the IEX function immediately stand out as the hidden scheduled task.</p>
+<p><strong>Answer:</strong> <code>schtasks /Create /F /SC DAILY /ST 09:00 /TN Updater /TR 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NonI -W hidden -c \\"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion debug).debug)))\\"'</code></p>
+<hr>
+<h2>Final Thoughts</h2>
+<p>This room didn't take very long to complete. I thought it was quite linear and involved switching back and forth between olevba and Volatility. I'm glad I got to learn about those tools — they are the highlight of this room.</p>`,
             github: ''
         },
         'boogeyman3': {
